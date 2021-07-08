@@ -1,0 +1,2 @@
+class TreasureHuntController < ApplicationController
+end

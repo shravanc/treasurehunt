@@ -1,0 +1,16 @@
+current directory: /Users/shravan/ruby_learning/test/treasurehunt/vendor/ruby/2.7.0/gems/racc-1.5.2/ext/racc/cparse
+/Users/shravan/.rvm/rubies/ruby-2.7.3/bin/ruby -I /Users/shravan/.rvm/rubies/ruby-2.7.3/lib/ruby/2.7.0 -r ./siteconf20210706-44228-1qpls2i.rb extconf.rb
+checking for rb_ary_subseq()... yes
+creating Makefile
+
+current directory: /Users/shravan/ruby_learning/test/treasurehunt/vendor/ruby/2.7.0/gems/racc-1.5.2/ext/racc/cparse
+make "DESTDIR=" clean
+
+current directory: /Users/shravan/ruby_learning/test/treasurehunt/vendor/ruby/2.7.0/gems/racc-1.5.2/ext/racc/cparse
+make "DESTDIR="
+compiling cparse.c
+linking shared-object racc/cparse.bundle
+
+current directory: /Users/shravan/ruby_learning/test/treasurehunt/vendor/ruby/2.7.0/gems/racc-1.5.2/ext/racc/cparse
+make "DESTDIR=" install
+/opt/homebrew/opt/coreutils/bin/ginstall -c -m 0755 cparse.bundle ./.gem.20210706-44228-1otfvop/racc

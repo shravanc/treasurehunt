@@ -10,17 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20_210_706_205_453) do
-  # These are extensions that must be enabled in order to support this database
-  enable_extension 'plpgsql'
+ActiveRecord::Schema.define(version: 2021_07_06_205453) do
 
-  create_table 'treasure_hunts', force: :cascade do |t|
-    t.float 'latitude'
-    t.float 'longitude'
-    t.string 'email'
-    t.float 'distance'
-    t.boolean 'winner', default: false
-    t.datetime 'created_at', precision: 6, null: false
-    t.datetime 'updated_at', precision: 6, null: false
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
+  create_table "treasure_hunts", force: :cascade do |t|
+    t.float "current_location", default: [], array: true
+    t.string "email"
+    t.float "distance"
+    t.boolean "winner", default: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
+
 end

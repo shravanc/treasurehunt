@@ -1644,3 +1644,319 @@ Processing by AnalyticsController#index as HTML
 Completed 200 OK in 14ms (Views: 0.3ms | ActiveRecord: 4.5ms | Allocations: 3757)
 
 
+Started POST "/treasure_hunt" for ::1 at 2021-07-08 20:13:16 +0100
+Processing by TreasureHuntController#create as JSON
+  Parameters: {"latitude"=>50.051227, "longitude"=>19.945704, "email"=>"shravan007.c@gmail.com", "treasure_hunt"=>{"latitude"=>50.051227, "longitude"=>19.945704, "email"=>"shravan007.c@gmail.com"}}
+[31mUnpermitted parameter: :treasure_hunt[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/treasure_hunt_controller.rb:8:in `create'
+  [1m[36mTreasureHunt Create (0.7ms)[0m  [1m[32mINSERT INTO "treasure_hunts" ("latitude", "longitude", "email", "distance", "winner", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["latitude", 50.051227], ["longitude", 19.945704], ["email", "shravan007.c@gmail.com"], ["distance", 0.0], ["winner", true], ["created_at", "2021-07-08 19:13:16.825311"], ["updated_at", "2021-07-08 19:13:16.825311"]]
+  ↳ app/controllers/treasure_hunt_controller.rb:8:in `create'
+[ActiveJob] Enqueued ActionMailer::MailDeliveryJob (Job ID: f69dc9f7-6ce3-4df9-85aa-fb839a4f3d68) to Async(default) with arguments: "SuccessMailer", "winner", "deliver_now", {:args=>[]}
+[ActiveJob] [ActionMailer::MailDeliveryJob] [f69dc9f7-6ce3-4df9-85aa-fb839a4f3d68] Performing ActionMailer::MailDeliveryJob (Job ID: f69dc9f7-6ce3-4df9-85aa-fb839a4f3d68) from Async(default) enqueued at 2021-07-08T19:13:16Z with arguments: "SuccessMailer", "winner", "deliver_now", {:args=>[]}
+[ActiveJob] [ActionMailer::MailDeliveryJob] [f69dc9f7-6ce3-4df9-85aa-fb839a4f3d68]   Rendering layout layouts/mailer.text.erb
+[ActiveJob] [ActionMailer::MailDeliveryJob] [f69dc9f7-6ce3-4df9-85aa-fb839a4f3d68]   Rendering success_mailer/winner.text.erb within layouts/mailer
+[ActiveJob] [ActionMailer::MailDeliveryJob] [f69dc9f7-6ce3-4df9-85aa-fb839a4f3d68]   Rendered success_mailer/winner.text.erb within layouts/mailer (Duration: 0.4ms | Allocations: 95)
+[ActiveJob] [ActionMailer::MailDeliveryJob] [f69dc9f7-6ce3-4df9-85aa-fb839a4f3d68]   Rendered layout layouts/mailer.text.erb (Duration: 0.8ms | Allocations: 267)
+[ActiveJob] [ActionMailer::MailDeliveryJob] [f69dc9f7-6ce3-4df9-85aa-fb839a4f3d68] SuccessMailer#winner: processed outbound mail in 4.6ms
+  [1m[36mTRANSACTION (16.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/treasure_hunt_controller.rb:8:in `create'
+Completed 200 OK in 43ms (Views: 0.2ms | ActiveRecord: 16.9ms | Allocations: 13031)
+
+
+[ActiveJob] [ActionMailer::MailDeliveryJob] [f69dc9f7-6ce3-4df9-85aa-fb839a4f3d68] Delivered mail 60e74e4cd1bc8_11f9d779c9242c@shravans-MacBook-Air.local.mail (1738.6ms)
+[ActiveJob] [ActionMailer::MailDeliveryJob] [f69dc9f7-6ce3-4df9-85aa-fb839a4f3d68] Date: Thu, 08 Jul 2021 20:13:16 +0100
+From: shravan.chandrashekharaiah@gmail.com
+To: shravan007.c@gmail.com
+Message-ID: <60e74e4cd1bc8_11f9d779c9242c@shravans-MacBook-Air.local.mail>
+Subject: Winner!!!
+Mime-Version: 1.0
+Content-Type: text/plain;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+Hey, you've found a treasure, congratulations!
+You are 1 treasure hunter who has found the treasure.
+
+[ActiveJob] [ActionMailer::MailDeliveryJob] [f69dc9f7-6ce3-4df9-85aa-fb839a4f3d68] Performed ActionMailer::MailDeliveryJob (Job ID: f69dc9f7-6ce3-4df9-85aa-fb839a4f3d68) from Async(default) in 1746.57ms
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (6.4ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (39.4ms)[0m  [1m[35mDROP DATABASE IF EXISTS "treasurehunt_development"[0m
+  [1m[35m (28.3ms)[0m  [1m[35mDROP DATABASE IF EXISTS "treasurehunt_test"[0m
+  [1m[35m (141.8ms)[0m  [1m[35mCREATE DATABASE "treasurehunt_development" ENCODING = 'unicode'[0m
+  [1m[35m (46.9ms)[0m  [1m[35mCREATE DATABASE "treasurehunt_test" ENCODING = 'unicode'[0m
+  [1m[35m (17.9ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[35m (5.6ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT pg_try_advisory_lock(6378126389701581375)[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateTreasureHunts (20210706205453)
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT pg_advisory_unlock(6378126389701581375)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT pg_try_advisory_lock(6378126389701581375)[0m
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateTreasureHunts (20210706205453)
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT pg_advisory_unlock(6378126389701581375)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(6378126389701581375)[0m
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateTreasureHunts (20210706205453)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (8.7ms)[0m  [1m[35mCREATE TABLE "treasure_hunts" ("id" bigserial primary key, "current_location" float[] DEFAULT '{}', "email" character varying, "distance" float, "winner" boolean DEFAULT FALSE, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.7ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20210706205453"]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (5.0ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.9ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2021-07-08 19:55:55.779820"], ["updated_at", "2021-07-08 19:55:55.779820"]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_advisory_unlock(6378126389701581375)[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started POST "/treasure_hunt" for ::1 at 2021-07-08 21:22:22 +0100
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by TreasureHuntController#create as JSON
+  Parameters: {"current_location"=>[50.051227, 19.945704], "email"=>"shravan007.c@gmail.com", "treasure_hunt"=>{"current_location"=>[50.051227, 19.945704], "email"=>"shravan007.c@gmail.com"}}
+[31mUnpermitted parameters: :current_location, :treasure_hunt[0m
+Completed 400 Bad Request in 13ms (Views: 0.1ms | ActiveRecord: 3.9ms | Allocations: 6275)
+
+
+Started POST "/treasure_hunt" for ::1 at 2021-07-08 21:23:06 +0100
+Processing by TreasureHuntController#create as JSON
+  Parameters: {"current_location"=>[50.051227, 19.945704], "email"=>"shravan007.c@gmail.com", "treasure_hunt"=>{"current_location"=>[50.051227, 19.945704], "email"=>"shravan007.c@gmail.com"}}
+[31mUnpermitted parameters: :current_location, :treasure_hunt[0m
+Completed 400 Bad Request in 9ms (Views: 0.1ms | ActiveRecord: 3.8ms | Allocations: 2894)
+
+
+Started POST "/treasure_hunt" for ::1 at 2021-07-08 21:24:06 +0100
+Processing by TreasureHuntController#create as JSON
+  Parameters: {"current_location"=>[50.051227, 19.945704], "email"=>"shravan007.c@gmail.com", "treasure_hunt"=>{"current_location"=>[50.051227, 19.945704], "email"=>"shravan007.c@gmail.com"}}
+[31mUnpermitted parameters: :current_location, :treasure_hunt[0m
+[31mUnpermitted parameters: :current_location, :treasure_hunt[0m
+Completed 400 Bad Request in 22ms (Views: 0.3ms | ActiveRecord: 20.1ms | Allocations: 2990)
+
+
+Started POST "/treasure_hunt" for ::1 at 2021-07-08 21:24:31 +0100
+Processing by TreasureHuntController#create as JSON
+  Parameters: {"current_location"=>[50.051227, 19.945704], "email"=>"shravan007.c@gmail.com", "treasure_hunt"=>{"current_location"=>[50.051227, 19.945704], "email"=>"shravan007.c@gmail.com"}}
+[31mUnpermitted parameters: :current_location, :treasure_hunt[0m
+[31mUnpermitted parameters: :current_location, :treasure_hunt[0m
+Completed 400 Bad Request in 3ms (Views: 0.2ms | ActiveRecord: 0.0ms | Allocations: 447)
+
+
+Started POST "/treasure_hunt" for ::1 at 2021-07-08 21:26:20 +0100
+  
+SyntaxError (/Users/shravan/ruby_learning/pulsate/treasurehunt/app/controllers/treasure_hunt_controller.rb:20: syntax error, unexpected ')', expecting =>
+...current_location => [], :email)
+...                              ^
+):
+  
+app/controllers/treasure_hunt_controller.rb:20: syntax error, unexpected ')', expecting =>
+app/controllers/treasure_hunt_controller.rb:20: syntax error, unexpected ')', expecting =>
+Started POST "/treasure_hunt" for ::1 at 2021-07-08 21:27:25 +0100
+  
+SyntaxError (/Users/shravan/ruby_learning/pulsate/treasurehunt/app/controllers/treasure_hunt_controller.rb:20: syntax error, unexpected ')', expecting =>
+...t(current_location: [], :email)
+...                              ^
+):
+  
+app/controllers/treasure_hunt_controller.rb:20: syntax error, unexpected ')', expecting =>
+app/controllers/treasure_hunt_controller.rb:20: syntax error, unexpected ')', expecting =>
+Started POST "/treasure_hunt" for ::1 at 2021-07-08 21:28:47 +0100
+Processing by TreasureHuntController#create as JSON
+  Parameters: {"current_location"=>[50.051227, 19.945704], "email"=>"shravan007.c@gmail.com", "treasure_hunt"=>{"current_location"=>[50.051227, 19.945704], "email"=>"shravan007.c@gmail.com"}}
+[31mUnpermitted parameter: :treasure_hunt[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/treasure_hunt_controller.rb:8:in `create'
+  [1m[36mTreasureHunt Create (14.6ms)[0m  [1m[32mINSERT INTO "treasure_hunts" ("current_location", "email", "distance", "winner", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["current_location", "{50.051227,19.945704}"], ["email", "shravan007.c@gmail.com"], ["distance", 0.0], ["winner", true], ["created_at", "2021-07-08 20:28:47.144593"], ["updated_at", "2021-07-08 20:28:47.144593"]]
+  ↳ app/controllers/treasure_hunt_controller.rb:8:in `create'
+[ActiveJob] Enqueued ActionMailer::MailDeliveryJob (Job ID: ab024a47-428e-46cf-b0ce-eda903c6ab13) to Async(default) with arguments: "SuccessMailer", "winner", "deliver_now", {:args=>[]}
+  [1m[36mTRANSACTION (5.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/treasure_hunt_controller.rb:8:in `create'
+Completed 200 OK in 42ms (Views: 0.2ms | ActiveRecord: 24.6ms | Allocations: 10706)
+
+
+[ActiveJob] [ActionMailer::MailDeliveryJob] [ab024a47-428e-46cf-b0ce-eda903c6ab13] Performing ActionMailer::MailDeliveryJob (Job ID: ab024a47-428e-46cf-b0ce-eda903c6ab13) from Async(default) enqueued at 2021-07-08T20:28:47Z with arguments: "SuccessMailer", "winner", "deliver_now", {:args=>[]}
+[ActiveJob] [ActionMailer::MailDeliveryJob] [ab024a47-428e-46cf-b0ce-eda903c6ab13]   Rendering layout layouts/mailer.text.erb
+[ActiveJob] [ActionMailer::MailDeliveryJob] [ab024a47-428e-46cf-b0ce-eda903c6ab13]   Rendering success_mailer/winner.text.erb within layouts/mailer
+[ActiveJob] [ActionMailer::MailDeliveryJob] [ab024a47-428e-46cf-b0ce-eda903c6ab13]   Rendered success_mailer/winner.text.erb within layouts/mailer (Duration: 0.5ms | Allocations: 199)
+[ActiveJob] [ActionMailer::MailDeliveryJob] [ab024a47-428e-46cf-b0ce-eda903c6ab13]   Rendered layout layouts/mailer.text.erb (Duration: 0.8ms | Allocations: 377)
+[ActiveJob] [ActionMailer::MailDeliveryJob] [ab024a47-428e-46cf-b0ce-eda903c6ab13] SuccessMailer#winner: processed outbound mail in 4.1ms
+[ActiveJob] [ActionMailer::MailDeliveryJob] [ab024a47-428e-46cf-b0ce-eda903c6ab13] Delivered mail 60e75fff3393c_123e2634c44447@shravans-MacBook-Air.local.mail (1803.2ms)
+[ActiveJob] [ActionMailer::MailDeliveryJob] [ab024a47-428e-46cf-b0ce-eda903c6ab13] Date: Thu, 08 Jul 2021 21:28:47 +0100
+From: shravan.chandrashekharaiah@gmail.com
+To: shravan007.c@gmail.com
+Message-ID: <60e75fff3393c_123e2634c44447@shravans-MacBook-Air.local.mail>
+Subject: Winner!!!
+Mime-Version: 1.0
+Content-Type: text/plain;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+Hey, you've found a treasure, congratulations!
+You are 1 treasure hunter who has found the treasure.
+
+[ActiveJob] [ActionMailer::MailDeliveryJob] [ab024a47-428e-46cf-b0ce-eda903c6ab13] Performed ActionMailer::MailDeliveryJob (Job ID: ab024a47-428e-46cf-b0ce-eda903c6ab13) from Async(default) in 1810.03ms
+Started POST "/treasure_hunt" for ::1 at 2021-07-08 21:28:52 +0100
+Processing by TreasureHuntController#create as JSON
+  Parameters: {"current_location"=>[50.05122, 19.945704], "email"=>"shravan007.c@gmail.com", "treasure_hunt"=>{"current_location"=>[50.05122, 19.945704], "email"=>"shravan007.c@gmail.com"}}
+[31mUnpermitted parameter: :treasure_hunt[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/treasure_hunt_controller.rb:8:in `create'
+  [1m[36mTreasureHunt Create (0.5ms)[0m  [1m[32mINSERT INTO "treasure_hunts" ("current_location", "email", "distance", "winner", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["current_location", "{50.05122,19.945704}"], ["email", "shravan007.c@gmail.com"], ["distance", 0.7783644860529515], ["winner", true], ["created_at", "2021-07-08 20:28:52.978302"], ["updated_at", "2021-07-08 20:28:52.978302"]]
+  ↳ app/controllers/treasure_hunt_controller.rb:8:in `create'
+[ActiveJob] Enqueued ActionMailer::MailDeliveryJob (Job ID: 3df92b77-cdea-4c6b-8da8-7340ad122f2b) to Async(default) with arguments: "SuccessMailer", "winner", "deliver_now", {:args=>[]}
+  [1m[36mTRANSACTION (0.9ms)[0m  [1m[35mCOMMIT[0m
+[ActiveJob] [ActionMailer::MailDeliveryJob] [3df92b77-cdea-4c6b-8da8-7340ad122f2b] Performing ActionMailer::MailDeliveryJob (Job ID: 3df92b77-cdea-4c6b-8da8-7340ad122f2b) from Async(default) enqueued at 2021-07-08T20:28:52Z with arguments: "SuccessMailer", "winner", "deliver_now", {:args=>[]}
+  ↳ app/controllers/treasure_hunt_controller.rb:8:in `create'
+[ActiveJob] [ActionMailer::MailDeliveryJob] [3df92b77-cdea-4c6b-8da8-7340ad122f2b]   Rendering layout layouts/mailer.text.erb
+Completed 200 OK in 18ms (Views: 0.3ms | ActiveRecord: 6.5ms | Allocations: 5100)
+
+
+[ActiveJob] [ActionMailer::MailDeliveryJob] [3df92b77-cdea-4c6b-8da8-7340ad122f2b]   Rendering success_mailer/winner.text.erb within layouts/mailer
+[ActiveJob] [ActionMailer::MailDeliveryJob] [3df92b77-cdea-4c6b-8da8-7340ad122f2b]   Rendered success_mailer/winner.text.erb within layouts/mailer (Duration: 0.0ms | Allocations: 5)
+[ActiveJob] [ActionMailer::MailDeliveryJob] [3df92b77-cdea-4c6b-8da8-7340ad122f2b]   Rendered layout layouts/mailer.text.erb (Duration: 0.9ms | Allocations: 256)
+[ActiveJob] [ActionMailer::MailDeliveryJob] [3df92b77-cdea-4c6b-8da8-7340ad122f2b] SuccessMailer#winner: processed outbound mail in 3.2ms
+[ActiveJob] [ActionMailer::MailDeliveryJob] [3df92b77-cdea-4c6b-8da8-7340ad122f2b] Delivered mail 60e76004f1731_123e2634c4451c@shravans-MacBook-Air.local.mail (1247.3ms)
+[ActiveJob] [ActionMailer::MailDeliveryJob] [3df92b77-cdea-4c6b-8da8-7340ad122f2b] Date: Thu, 08 Jul 2021 21:28:52 +0100
+From: shravan.chandrashekharaiah@gmail.com
+To: shravan007.c@gmail.com
+Message-ID: <60e76004f1731_123e2634c4451c@shravans-MacBook-Air.local.mail>
+Subject: Winner!!!
+Mime-Version: 1.0
+Content-Type: text/plain;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+Hey, you've found a treasure, congratulations!
+You are 1 treasure hunter who has found the treasure.
+
+[ActiveJob] [ActionMailer::MailDeliveryJob] [3df92b77-cdea-4c6b-8da8-7340ad122f2b] Performed ActionMailer::MailDeliveryJob (Job ID: 3df92b77-cdea-4c6b-8da8-7340ad122f2b) from Async(default) in 1252.61ms
+Started POST "/treasure_hunt?current_location[]=50.1&current_location[]=19&email=a@a.com" for ::1 at 2021-07-08 21:29:44 +0100
+Processing by TreasureHuntController#create as JSON
+  Parameters: {"current_location"=>["50.1", "19"], "email"=>"a@a.com", "treasure_hunt"=>{}}
+[31mUnpermitted parameter: :treasure_hunt[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/treasure_hunt_controller.rb:8:in `create'
+  [1m[36mTreasureHunt Create (0.4ms)[0m  [1m[32mINSERT INTO "treasure_hunts" ("current_location", "email", "distance", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["current_location", "{50.1,19.0}"], ["email", "a@a.com"], ["distance", 67704.66009490268], ["created_at", "2021-07-08 20:29:44.729490"], ["updated_at", "2021-07-08 20:29:44.729490"]]
+  ↳ app/controllers/treasure_hunt_controller.rb:8:in `create'
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/treasure_hunt_controller.rb:8:in `create'
+Completed 200 OK in 6ms (Views: 0.3ms | ActiveRecord: 1.1ms | Allocations: 1818)
+
+
+Started POST "/treasure_hunt.json?current_location[]=50.1&current_location[]=19&email=a@a.com" for ::1 at 2021-07-08 21:29:53 +0100
+Processing by TreasureHuntController#create as JSON
+  Parameters: {"current_location"=>["50.1", "19"], "email"=>"a@a.com", "treasure_hunt"=>{}}
+[31mUnpermitted parameters: :format, :treasure_hunt[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/treasure_hunt_controller.rb:8:in `create'
+  [1m[36mTreasureHunt Create (0.2ms)[0m  [1m[32mINSERT INTO "treasure_hunts" ("current_location", "email", "distance", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["current_location", "{50.1,19.0}"], ["email", "a@a.com"], ["distance", 67704.66009490268], ["created_at", "2021-07-08 20:29:53.926214"], ["updated_at", "2021-07-08 20:29:53.926214"]]
+  ↳ app/controllers/treasure_hunt_controller.rb:8:in `create'
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/treasure_hunt_controller.rb:8:in `create'
+Completed 200 OK in 4ms (Views: 0.1ms | ActiveRecord: 0.8ms | Allocations: 1801)
+
+
+Started GET "/analytics?start_date=15-05-1991&end_date=8-07-2021&radius=1" for ::1 at 2021-07-08 21:30:19 +0100
+Processing by AnalyticsController#index as HTML
+  Parameters: {"start_date"=>"15-05-1991", "end_date"=>"8-07-2021", "radius"=>"1"}
+Completed 400 Bad Request in 12ms (Views: 0.2ms | ActiveRecord: 0.0ms | Allocations: 3161)
+
+
+Started GET "/analytics?start_date=15-05-1991&end_date=8-07-2021&radius=1" for ::1 at 2021-07-08 21:30:38 +0100
+Processing by AnalyticsController#index as HTML
+  Parameters: {"start_date"=>"15-05-1991", "end_date"=>"8-07-2021", "radius"=>"1"}
+  [1m[36mTreasureHunt Load (7.0ms)[0m  [1m[34mSELECT "treasure_hunts".* FROM "treasure_hunts" WHERE "treasure_hunts"."created_at" BETWEEN $1 AND $2 AND (distance < '1')[0m  [["created_at", "1991-05-14 23:00:00"], ["created_at", "2021-07-08 22:59:59.999999"]]
+  ↳ app/controllers/analytics_controller.rb:11:in `index'
+Completed 200 OK in 51ms (Views: 0.2ms | ActiveRecord: 24.4ms | Allocations: 4807)
+
+
+Started GET "/analytics?start_date=15-05-1991&end_date=8-07-2021&radius=1" for ::1 at 2021-07-08 21:31:09 +0100
+Processing by AnalyticsController#index as HTML
+  Parameters: {"start_date"=>"15-05-1991", "end_date"=>"8-07-2021", "radius"=>"1"}
+Completed 500 Internal Server Error in 22ms (ActiveRecord: 16.5ms | Allocations: 3100)
+
+
+  
+NameError (undefined local variable or method `exc' for #<AnalyticsController:0x0000000000fd48>
+Did you mean?  exec):
+  
+app/controllers/analytics_controller.rb:11:in `index'
+Started GET "/analytics?start_date=15-05-1991&end_date=8-07-2021&radius=1" for ::1 at 2021-07-08 21:31:13 +0100
+Processing by AnalyticsController#index as HTML
+  Parameters: {"start_date"=>"15-05-1991", "end_date"=>"8-07-2021", "radius"=>"1"}
+  [1m[36mTreasureHunt Load (0.4ms)[0m  [1m[34mSELECT "treasure_hunts".* FROM "treasure_hunts" WHERE "treasure_hunts"."created_at" BETWEEN $1 AND $2 AND (distance < '1')[0m  [["created_at", "1991-05-14 23:00:00"], ["created_at", "2021-07-08 22:59:59.999999"]]
+  ↳ app/controllers/analytics_controller.rb:11:in `index'
+Completed 200 OK in 12ms (Views: 0.2ms | ActiveRecord: 3.9ms | Allocations: 4794)
+
+
+Started GET "/analytics?start_date=15-05-1991&end_date=8-07-2021&radius=1" for ::1 at 2021-07-08 21:31:32 +0100
+Processing by AnalyticsController#index as HTML
+  Parameters: {"start_date"=>"15-05-1991", "end_date"=>"8-07-2021", "radius"=>"1"}
+  [1m[36mTreasureHunt Load (5.0ms)[0m  [1m[34mSELECT "treasure_hunts".* FROM "treasure_hunts" WHERE "treasure_hunts"."created_at" BETWEEN $1 AND $2 AND (distance < '1')[0m  [["created_at", "1991-05-14 23:00:00"], ["created_at", "2021-07-08 22:59:59.999999"]]
+  ↳ app/controllers/analytics_controller.rb:11:in `index'
+Completed 200 OK in 22ms (Views: 0.2ms | ActiveRecord: 14.9ms | Allocations: 4361)
+
+
+Started GET "/analytics?start_date=15-05-1991&end_date=8-07-2020&radius=1" for ::1 at 2021-07-08 21:31:48 +0100
+Processing by AnalyticsController#index as HTML
+  Parameters: {"start_date"=>"15-05-1991", "end_date"=>"8-07-2020", "radius"=>"1"}
+  [1m[36mTreasureHunt Load (0.3ms)[0m  [1m[34mSELECT "treasure_hunts".* FROM "treasure_hunts" WHERE "treasure_hunts"."created_at" BETWEEN $1 AND $2 AND (distance < '1')[0m  [["created_at", "1991-05-14 23:00:00"], ["created_at", "2020-07-08 22:59:59.999999"]]
+  ↳ app/controllers/analytics_controller.rb:11:in `index'
+Completed 200 OK in 2ms (Views: 0.2ms | ActiveRecord: 0.3ms | Allocations: 759)
+
+
+Started GET "/analytics?start_date=15-05-1991&end_date=8-07-2021&radius=1" for ::1 at 2021-07-08 21:31:59 +0100
+Processing by AnalyticsController#index as HTML
+  Parameters: {"start_date"=>"15-05-1991", "end_date"=>"8-07-2021", "radius"=>"1"}
+  [1m[36mTreasureHunt Load (0.4ms)[0m  [1m[34mSELECT "treasure_hunts".* FROM "treasure_hunts" WHERE "treasure_hunts"."created_at" BETWEEN $1 AND $2 AND (distance < '1')[0m  [["created_at", "1991-05-14 23:00:00"], ["created_at", "2021-07-08 22:59:59.999999"]]
+  ↳ app/controllers/analytics_controller.rb:11:in `index'
+Completed 200 OK in 6ms (Views: 0.3ms | ActiveRecord: 0.4ms | Allocations: 900)
+
+
+Started GET "/analytics?start_date=15-05-1991&end_date1=8-07-2021&radius=1" for ::1 at 2021-07-08 21:32:06 +0100
+Processing by AnalyticsController#index as HTML
+  Parameters: {"start_date"=>"15-05-1991", "end_date1"=>"8-07-2021", "radius"=>"1"}
+Completed 400 Bad Request in 2ms (Views: 0.2ms | ActiveRecord: 0.0ms | Allocations: 699)
+
+
+Started GET "/analytics?start_date=15-05-1991&end_date=8-07-2021&radius=1" for ::1 at 2021-07-08 21:32:16 +0100
+Processing by AnalyticsController#index as HTML
+  Parameters: {"start_date"=>"15-05-1991", "end_date"=>"8-07-2021", "radius"=>"1"}
+  [1m[36mTreasureHunt Load (0.7ms)[0m  [1m[34mSELECT "treasure_hunts".* FROM "treasure_hunts" WHERE "treasure_hunts"."created_at" BETWEEN $1 AND $2 AND (distance < '1')[0m  [["created_at", "1991-05-14 23:00:00"], ["created_at", "2021-07-08 22:59:59.999999"]]
+  ↳ app/controllers/analytics_controller.rb:11:in `index'
+Completed 200 OK in 16ms (Views: 0.5ms | ActiveRecord: 0.7ms | Allocations: 899)
+
+
+Started GET "/analytics?start_date=15-05-1991&end_date1=8-07-2021&radius=1" for ::1 at 2021-07-08 21:32:21 +0100
+Processing by AnalyticsController#index as HTML
+  Parameters: {"start_date"=>"15-05-1991", "end_date1"=>"8-07-2021", "radius"=>"1"}
+Completed 400 Bad Request in 3ms (Views: 0.4ms | ActiveRecord: 0.0ms | Allocations: 694)
+
+
+Started GET "/analytics?start_date=15-05-1991&end_date1=8-07-2021&radius=1" for ::1 at 2021-07-08 21:32:53 +0100
+Processing by AnalyticsController#index as HTML
+  Parameters: {"start_date"=>"15-05-1991", "end_date1"=>"8-07-2021", "radius"=>"1"}
+Completed 400 Bad Request in 3ms (Views: 0.1ms | ActiveRecord: 0.0ms | Allocations: 1229)
+
+
+Started GET "/analytics?start_date=15-05-1991&end_date1=8-07-2021" for ::1 at 2021-07-08 21:33:05 +0100
+Processing by AnalyticsController#index as HTML
+  Parameters: {"start_date"=>"15-05-1991", "end_date1"=>"8-07-2021"}
+Completed 400 Bad Request in 4ms (Views: 0.4ms | ActiveRecord: 0.0ms | Allocations: 706)
+
+
+Started GET "/analytics?start_date=15-05-1991&end_date1=8-07-2021" for ::1 at 2021-07-08 21:33:11 +0100
+Processing by AnalyticsController#index as HTML
+  Parameters: {"start_date"=>"15-05-1991", "end_date1"=>"8-07-2021"}
+Completed 400 Bad Request in 2ms (Views: 0.2ms | ActiveRecord: 0.0ms | Allocations: 704)
+
+
+Started GET "/analytics?start_date=15-05-1991&end_date=8-07-2021" for ::1 at 2021-07-08 21:33:18 +0100
+Processing by AnalyticsController#index as HTML
+  Parameters: {"start_date"=>"15-05-1991", "end_date"=>"8-07-2021"}
+  [1m[36mTreasureHunt Load (0.4ms)[0m  [1m[34mSELECT "treasure_hunts".* FROM "treasure_hunts" WHERE "treasure_hunts"."created_at" BETWEEN $1 AND $2 AND (distance < NULL)[0m  [["created_at", "1991-05-14 23:00:00"], ["created_at", "2021-07-08 22:59:59.999999"]]
+  ↳ app/controllers/analytics_controller.rb:11:in `index'
+Completed 200 OK in 8ms (Views: 0.2ms | ActiveRecord: 2.5ms | Allocations: 1206)
+
+

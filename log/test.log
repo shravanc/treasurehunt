@@ -6306,3 +6306,338 @@ Processing by TreasureHuntController#create as HTML
   Parameters: {"email"=>"a@a.com"}
 Completed 400 Bad Request in 0ms (Views: 0.1ms | ActiveRecord: 0.0ms | Allocations: 372)
   [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (29.5ms)[0m  [1m[35mDROP DATABASE IF EXISTS "treasurehunt_test"[0m
+  [1m[35m (114.8ms)[0m  [1m[35mCREATE DATABASE "treasurehunt_test" ENCODING = 'unicode'[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[35mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "treasure_hunts" CASCADE[0m
+  [1m[35m (4.9ms)[0m  [1m[35mCREATE TABLE "treasure_hunts" ("id" bigserial primary key, "current_location" float[] DEFAULT '{}', "email" character varying, "distance" float, "winner" boolean DEFAULT FALSE, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (1.4ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20210706205453)[0m
+  [1m[35m (2.6ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.2ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "test"], ["created_at", "2021-07-08 20:00:48.237906"], ["updated_at", "2021-07-08 20:00:48.237906"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "schema_sha1"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.1ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "schema_sha1"], ["value", "6f36f6c281c3d516f101898f98f1fb85c2fed8ae"], ["created_at", "2021-07-08 20:00:48.240306"], ["updated_at", "2021-07-08 20:00:48.240306"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  Rendering layout layouts/mailer.text.erb
+  Rendering success_mailer/winner.text.erb within layouts/mailer
+  Rendered success_mailer/winner.text.erb within layouts/mailer (Duration: 0.4ms | Allocations: 197)
+  Rendered layout layouts/mailer.text.erb (Duration: 0.6ms | Allocations: 324)
+SuccessMailer#winner: processed outbound mail in 5.9ms
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN[0m
+Started GET "/treasure_hunt" for 127.0.0.1 at 2021-07-08 21:00:48 +0100
+Processing by TreasureHuntController#index as HTML
+Completed 200 OK in 0ms (Views: 0.1ms | ActiveRecord: 0.0ms | Allocations: 145)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "treasure_hunts"[0m
+Started POST "/treasure_hunt" for 127.0.0.1 at 2021-07-08 21:00:48 +0100
+Processing by TreasureHuntController#create as HTML
+  Parameters: {"current_location"=>["123", "123"], "email"=>"a@a.com"}
+[31mUnpermitted parameter: :current_location[0m
+Completed 400 Bad Request in 1ms (Views: 0.1ms | ActiveRecord: 0.0ms | Allocations: 513)
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "treasure_hunts"[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+Started POST "/treasure_hunt" for 127.0.0.1 at 2021-07-08 21:00:48 +0100
+Processing by TreasureHuntController#create as HTML
+  Parameters: {"email"=>"a@a.com"}
+Completed 400 Bad Request in 0ms (Views: 0.1ms | ActiveRecord: 0.0ms | Allocations: 488)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "schema_sha1"]]
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  Rendering layout layouts/mailer.text.erb
+  Rendering success_mailer/winner.text.erb within layouts/mailer
+  Rendered success_mailer/winner.text.erb within layouts/mailer (Duration: 0.3ms | Allocations: 197)
+  Rendered layout layouts/mailer.text.erb (Duration: 0.5ms | Allocations: 324)
+SuccessMailer#winner: processed outbound mail in 4.7ms
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN[0m
+Started GET "/treasure_hunt" for 127.0.0.1 at 2021-07-08 21:02:47 +0100
+Processing by TreasureHuntController#index as HTML
+  [1m[36mTreasureHunt Load (0.4ms)[0m  [1m[34mSELECT "treasure_hunts".* FROM "treasure_hunts"[0m
+Completed 200 OK in 1ms (Views: 0.3ms | ActiveRecord: 0.4ms | Allocations: 393)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "treasure_hunts"[0m
+Started POST "/treasure_hunt" for 127.0.0.1 at 2021-07-08 21:02:47 +0100
+Processing by TreasureHuntController#create as HTML
+  Parameters: {"current_location"=>["123", "123"], "email"=>"a@a.com"}
+[31mUnpermitted parameter: :current_location[0m
+Completed 400 Bad Request in 1ms (Views: 0.1ms | ActiveRecord: 0.0ms | Allocations: 512)
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "treasure_hunts"[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+Started POST "/treasure_hunt" for 127.0.0.1 at 2021-07-08 21:02:47 +0100
+Processing by TreasureHuntController#create as HTML
+  Parameters: {"email"=>"a@a.com"}
+Completed 400 Bad Request in 1ms (Views: 0.1ms | ActiveRecord: 0.0ms | Allocations: 488)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "schema_sha1"]]
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  Rendering layout layouts/mailer.text.erb
+  Rendering success_mailer/winner.text.erb within layouts/mailer
+  Rendered success_mailer/winner.text.erb within layouts/mailer (Duration: 0.4ms | Allocations: 197)
+  Rendered layout layouts/mailer.text.erb (Duration: 0.5ms | Allocations: 324)
+SuccessMailer#winner: processed outbound mail in 4.6ms
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN[0m
+Started GET "/treasure_hunt" for 127.0.0.1 at 2021-07-08 21:03:03 +0100
+Processing by TreasureHuntController#index as HTML
+  [1m[36mTreasureHunt Load (0.4ms)[0m  [1m[34mSELECT "treasure_hunts".* FROM "treasure_hunts"[0m
+Completed 200 OK in 1ms (Views: 0.3ms | ActiveRecord: 0.4ms | Allocations: 393)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "treasure_hunts"[0m
+Started POST "/treasure_hunt" for 127.0.0.1 at 2021-07-08 21:03:03 +0100
+Processing by TreasureHuntController#create as HTML
+  Parameters: {"current_location"=>["123", "123"], "email"=>"a@a.com"}
+[31mUnpermitted parameter: :current_location[0m
+Completed 400 Bad Request in 1ms (Views: 0.1ms | ActiveRecord: 0.0ms | Allocations: 512)
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "treasure_hunts"[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN[0m
+Started POST "/treasure_hunt" for 127.0.0.1 at 2021-07-08 21:03:03 +0100
+Processing by TreasureHuntController#create as HTML
+  Parameters: {"email"=>"a@a.com"}
+Completed 400 Bad Request in 0ms (Views: 0.1ms | ActiveRecord: 0.0ms | Allocations: 488)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "schema_sha1"]]
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  Rendering layout layouts/mailer.text.erb
+  Rendering success_mailer/winner.text.erb within layouts/mailer
+  Rendered success_mailer/winner.text.erb within layouts/mailer (Duration: 0.4ms | Allocations: 197)
+  Rendered layout layouts/mailer.text.erb (Duration: 0.6ms | Allocations: 324)
+SuccessMailer#winner: processed outbound mail in 6.4ms
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mTreasureHunt Create (1.1ms)[0m  [1m[32mINSERT INTO "treasure_hunts" ("current_location", "email", "distance", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["current_location", "{1.1,2.2}"], ["email", "example@domain.com"], ["distance", 5696850.257752681], ["created_at", "2021-07-08 20:20:43.136262"], ["updated_at", "2021-07-08 20:20:43.136262"]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mTreasureHunt Create (0.1ms)[0m  [1m[32mINSERT INTO "treasure_hunts" ("current_location", "email", "distance", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["current_location", "{1.1,2.2}"], ["email", "example@domain.com"], ["distance", 5696850.257752681], ["created_at", "2021-07-08 20:20:43.138470"], ["updated_at", "2021-07-08 20:20:43.138470"]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mTreasureHunt Create (0.1ms)[0m  [1m[32mINSERT INTO "treasure_hunts" ("current_location", "email", "distance", "winner", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["current_location", "{50.0512,19.9457}"], ["email", "example@domain.com"], ["distance", 3.015816189738042], ["winner", true], ["created_at", "2021-07-08 20:20:43.139368"], ["updated_at", "2021-07-08 20:20:43.139368"]]
+[ActiveJob] Enqueued ActionMailer::MailDeliveryJob (Job ID: e4f3821d-b4df-42e0-b35b-dbee16e060cf) to Async(default) with arguments: "SuccessMailer", "winner", "deliver_now", {:args=>[]}
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+Started GET "/treasure_hunt" for 127.0.0.1 at 2021-07-08 21:20:43 +0100
+[ActiveJob] [ActionMailer::MailDeliveryJob] [e4f3821d-b4df-42e0-b35b-dbee16e060cf] Performing ActionMailer::MailDeliveryJob (Job ID: e4f3821d-b4df-42e0-b35b-dbee16e060cf) from Test(default) enqueued at 2021-07-08T20:20:43Z with arguments: "SuccessMailer", "winner", "deliver_now", {:args=>[]}
+[ActiveJob] [ActionMailer::MailDeliveryJob] [e4f3821d-b4df-42e0-b35b-dbee16e060cf]   Rendering layout layouts/mailer.text.erb
+[ActiveJob] [ActionMailer::MailDeliveryJob] [e4f3821d-b4df-42e0-b35b-dbee16e060cf]   Rendering success_mailer/winner.text.erb within layouts/mailer
+[ActiveJob] [ActionMailer::MailDeliveryJob] [e4f3821d-b4df-42e0-b35b-dbee16e060cf]   Rendered success_mailer/winner.text.erb within layouts/mailer (Duration: 0.0ms | Allocations: 5)
+[ActiveJob] [ActionMailer::MailDeliveryJob] [e4f3821d-b4df-42e0-b35b-dbee16e060cf]   Rendered layout layouts/mailer.text.erb (Duration: 0.1ms | Allocations: 63)
+[ActiveJob] [ActionMailer::MailDeliveryJob] [e4f3821d-b4df-42e0-b35b-dbee16e060cf] SuccessMailer#winner: processed outbound mail in 0.5ms
+[ActiveJob] [ActionMailer::MailDeliveryJob] [e4f3821d-b4df-42e0-b35b-dbee16e060cf] Delivered mail 60e75e1b244ad_123cc3368988fd@shravans-MacBook-Air.local.mail (1.5ms)
+[ActiveJob] [ActionMailer::MailDeliveryJob] [e4f3821d-b4df-42e0-b35b-dbee16e060cf] Date: Thu, 08 Jul 2021 21:20:43 +0100
+From: shravan.chandrashekharaiah@gmail.com
+To: shravan007.c@gmail.com
+Message-ID: <60e75e1b244ad_123cc3368988fd@shravans-MacBook-Air.local.mail>
+Subject: Winner!!!
+Mime-Version: 1.0
+Content-Type: text/plain;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+Hey, you've found a treasure, congratulations!
+You are 1 treasure hunter who has found the treasure.
+
+[ActiveJob] [ActionMailer::MailDeliveryJob] [e4f3821d-b4df-42e0-b35b-dbee16e060cf] Performed ActionMailer::MailDeliveryJob (Job ID: e4f3821d-b4df-42e0-b35b-dbee16e060cf) from Test(default) in 3.61ms
+Processing by TreasureHuntController#index as HTML
+  [1m[36mTreasureHunt Load (0.4ms)[0m  [1m[34mSELECT "treasure_hunts".* FROM "treasure_hunts"[0m
+Completed 200 OK in 1ms (Views: 0.3ms | ActiveRecord: 0.4ms | Allocations: 350)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "treasure_hunts"[0m
+Started POST "/treasure_hunt" for 127.0.0.1 at 2021-07-08 21:20:43 +0100
+Processing by TreasureHuntController#create as HTML
+  Parameters: {"current_location"=>["123", "123"], "email"=>"a@a.com"}
+[31mUnpermitted parameter: :current_location[0m
+Completed 400 Bad Request in 0ms (Views: 0.1ms | ActiveRecord: 0.0ms | Allocations: 392)
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "treasure_hunts"[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN[0m
+Started POST "/treasure_hunt" for 127.0.0.1 at 2021-07-08 21:20:43 +0100
+Processing by TreasureHuntController#create as HTML
+  Parameters: {"email"=>"a@a.com"}
+Completed 400 Bad Request in 0ms (Views: 0.1ms | ActiveRecord: 0.0ms | Allocations: 488)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "schema_sha1"]]
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  Rendering layout layouts/mailer.text.erb
+  Rendering success_mailer/winner.text.erb within layouts/mailer
+  Rendered success_mailer/winner.text.erb within layouts/mailer (Duration: 0.4ms | Allocations: 197)
+  Rendered layout layouts/mailer.text.erb (Duration: 0.7ms | Allocations: 324)
+SuccessMailer#winner: processed outbound mail in 5.2ms
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mTreasureHunt Create (0.5ms)[0m  [1m[32mINSERT INTO "treasure_hunts" ("current_location", "email", "distance", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["current_location", "{1.1,2.2}"], ["email", "example@domain.com"], ["distance", 5696850.257752681], ["created_at", "2021-07-08 20:28:35.726424"], ["updated_at", "2021-07-08 20:28:35.726424"]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mTreasureHunt Create (0.1ms)[0m  [1m[32mINSERT INTO "treasure_hunts" ("current_location", "email", "distance", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["current_location", "{1.1,2.2}"], ["email", "example@domain.com"], ["distance", 5696850.257752681], ["created_at", "2021-07-08 20:28:35.728185"], ["updated_at", "2021-07-08 20:28:35.728185"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mTreasureHunt Create (0.1ms)[0m  [1m[32mINSERT INTO "treasure_hunts" ("current_location", "email", "distance", "winner", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["current_location", "{50.0512,19.9457}"], ["email", "example@domain.com"], ["distance", 3.015816189738042], ["winner", true], ["created_at", "2021-07-08 20:28:35.729263"], ["updated_at", "2021-07-08 20:28:35.729263"]]
+[ActiveJob] Enqueued ActionMailer::MailDeliveryJob (Job ID: 17e5f205-b43a-4f24-a707-8bf3e44dbb15) to Async(default) with arguments: "SuccessMailer", "winner", "deliver_now", {:args=>[]}
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN[0m
+Started GET "/treasure_hunt" for 127.0.0.1 at 2021-07-08 21:28:35 +0100
+[ActiveJob] [ActionMailer::MailDeliveryJob] [17e5f205-b43a-4f24-a707-8bf3e44dbb15] Performing ActionMailer::MailDeliveryJob (Job ID: 17e5f205-b43a-4f24-a707-8bf3e44dbb15) from Test(default) enqueued at 2021-07-08T20:28:35Z with arguments: "SuccessMailer", "winner", "deliver_now", {:args=>[]}
+[ActiveJob] [ActionMailer::MailDeliveryJob] [17e5f205-b43a-4f24-a707-8bf3e44dbb15]   Rendering layout layouts/mailer.text.erb
+[ActiveJob] [ActionMailer::MailDeliveryJob] [17e5f205-b43a-4f24-a707-8bf3e44dbb15]   Rendering success_mailer/winner.text.erb within layouts/mailer
+[ActiveJob] [ActionMailer::MailDeliveryJob] [17e5f205-b43a-4f24-a707-8bf3e44dbb15]   Rendered success_mailer/winner.text.erb within layouts/mailer (Duration: 0.0ms | Allocations: 5)
+[ActiveJob] [ActionMailer::MailDeliveryJob] [17e5f205-b43a-4f24-a707-8bf3e44dbb15]   Rendered layout layouts/mailer.text.erb (Duration: 0.1ms | Allocations: 65)
+[ActiveJob] [ActionMailer::MailDeliveryJob] [17e5f205-b43a-4f24-a707-8bf3e44dbb15] SuccessMailer#winner: processed outbound mail in 0.5ms
+[ActiveJob] [ActionMailer::MailDeliveryJob] [17e5f205-b43a-4f24-a707-8bf3e44dbb15] Delivered mail 60e75ff3b4339_124ac33682833@shravans-MacBook-Air.local.mail (1.6ms)
+[ActiveJob] [ActionMailer::MailDeliveryJob] [17e5f205-b43a-4f24-a707-8bf3e44dbb15] Date: Thu, 08 Jul 2021 21:28:35 +0100
+From: shravan.chandrashekharaiah@gmail.com
+To: shravan007.c@gmail.com
+Message-ID: <60e75ff3b4339_124ac33682833@shravans-MacBook-Air.local.mail>
+Subject: Winner!!!
+Mime-Version: 1.0
+Content-Type: text/plain;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+Hey, you've found a treasure, congratulations!
+You are 1 treasure hunter who has found the treasure.
+
+[ActiveJob] [ActionMailer::MailDeliveryJob] [17e5f205-b43a-4f24-a707-8bf3e44dbb15] Performed ActionMailer::MailDeliveryJob (Job ID: 17e5f205-b43a-4f24-a707-8bf3e44dbb15) from Test(default) in 3.52ms
+Processing by TreasureHuntController#index as HTML
+  [1m[36mTreasureHunt Load (0.4ms)[0m  [1m[34mSELECT "treasure_hunts".* FROM "treasure_hunts"[0m
+Completed 200 OK in 1ms (Views: 0.3ms | ActiveRecord: 0.4ms | Allocations: 350)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "treasure_hunts"[0m
+Started POST "/treasure_hunt" for 127.0.0.1 at 2021-07-08 21:28:35 +0100
+Processing by TreasureHuntController#create as HTML
+  Parameters: {"current_location"=>["123", "123"], "email"=>"a@a.com"}
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mTreasureHunt Create (0.2ms)[0m  [1m[32mINSERT INTO "treasure_hunts" ("current_location", "email", "distance", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["current_location", "{123.0,123.0}"], ["email", "a@a.com"], ["distance", 4868755.735634592], ["created_at", "2021-07-08 20:28:35.750383"], ["updated_at", "2021-07-08 20:28:35.750383"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Completed 200 OK in 1ms (Views: 0.1ms | ActiveRecord: 0.3ms | Allocations: 646)
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "treasure_hunts"[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mTreasureHunt Create (0.2ms)[0m  [1m[32mINSERT INTO "treasure_hunts" ("current_location", "email", "distance", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["current_location", "{123.0,123.0}"], ["email", "a@a.com"], ["distance", 4868755.735634592], ["created_at", "2021-07-08 20:28:35.751579"], ["updated_at", "2021-07-08 20:28:35.751579"]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN[0m
+Started POST "/treasure_hunt" for 127.0.0.1 at 2021-07-08 21:28:35 +0100
+Processing by TreasureHuntController#create as HTML
+  Parameters: {"email"=>"a@a.com"}
+Completed 400 Bad Request in 0ms (Views: 0.1ms | ActiveRecord: 0.0ms | Allocations: 456)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK[0m

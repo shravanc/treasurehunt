@@ -4,8 +4,7 @@ RSpec.describe TreasureHunt, type: :model do
   context 'Validation check' do
     let(:th) do
       TreasureHunt.new(
-        latitude: 50.051227,
-        longitude: 19.945704,
+        current_location: [50.051227, 19.945704],
         email: 'example@domain.com'
       )
     end
@@ -14,15 +13,15 @@ RSpec.describe TreasureHunt, type: :model do
       expect(th).to be_valid
     end
 
-    it 'is not valid without latitude' do
-      th.latitude = nil
-      expect(th).to_not be_valid
-    end
+    # it 'is not valid without latitude' do
+    #   th.latitude = nil
+    #   expect(th).to_not be_valid
+    # end
 
-    it 'is not valid without longitude' do
-      th.longitude = nil
-      expect(th).to_not be_valid
-    end
+    # it 'is not valid without longitude' do
+    #   th.longitude = nil
+    #   expect(th).to_not be_valid
+    # end
 
     it 'is not valid without email' do
       th.email = nil
@@ -49,8 +48,7 @@ RSpec.describe TreasureHunt, type: :model do
   context 'Distance Calculation' do
     let(:th) do
       TreasureHunt.new(
-        latitude: 1.1,
-        longitude: 2.2,
+        current_location: [1.1, 2.2],
         email: 'example@domain.com'
       )
     end
@@ -66,8 +64,7 @@ RSpec.describe TreasureHunt, type: :model do
     end
 
     it 'less than 5' do
-      th.latitude = 50.0512
-      th.longitude = 19.9457
+      th.current_location = [50.0512, 19.9457]
       th.save
       expect(th.winner).to eq(true)
     end

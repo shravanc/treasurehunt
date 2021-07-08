@@ -1,6 +1,6 @@
 class TreasureHuntController < ApplicationController
   def index
-    render json: {}, status: :ok
+    render json: TreasureHunt.all, status: :ok
   end
 
   def create
@@ -15,6 +15,6 @@ class TreasureHuntController < ApplicationController
   private
 
   def treasure_hunt_params
-    params.permit(:latitude, :longitude, :email)
+    params.permit(:email, [:current_location => []])
   end
 end

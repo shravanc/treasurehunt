@@ -1,4 +1,4 @@
-require "active_support/core_ext/integer/time"
+require 'active_support/core_ext/integer/time'
 
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
@@ -51,10 +51,10 @@ Rails.application.configure do
   config.active_record.verbose_query_logs = true
 
   config.action_mailer.smtp_settings = {
-    address: "smtp.gmail.com",
+    address: 'smtp.gmail.com',
     port: 587,
-    domain: "example.com",
-    authentication: "plain",
+    domain: 'example.com',
+    authentication: 'plain',
     enable_starttls_auto: true,
     user_name: 'shravan.chandrashekharaiah@gmail.com',
     password: 'Jhansi007'

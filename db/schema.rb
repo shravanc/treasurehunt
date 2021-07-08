@@ -16,8 +16,7 @@ ActiveRecord::Schema.define(version: 2021_07_06_205453) do
   enable_extension "plpgsql"
 
   create_table "treasure_hunts", force: :cascade do |t|
-    t.float "latitude"
-    t.float "longitude"
+    t.float "current_location", default: [], array: true
     t.string "email"
     t.float "distance"
     t.boolean "winner", default: false

@@ -57,20 +57,19 @@ RSpec.describe TreasureHunt, type: :model do
 
     it 'distance from treasure location is 5696850.2577526815 meter' do
       th.save
-      expect(th.distance).to eq(5696850.2577526815)
+      expect(th.distance).to eq(5_696_850.2577526815)
     end
 
-    it "Winner is set to true only under 5m distance" do 
+    it 'Winner is set to true only under 5m distance' do
       th.save
       expect(th.winner).to eq(false)
     end
 
-    it "less than 5" do
+    it 'less than 5' do
       th.latitude = 50.0512
       th.longitude = 19.9457
       th.save
       expect(th.winner).to eq(true)
     end
-
   end
 end

@@ -41,20 +41,20 @@ RSpec.describe 'TreasureHunts', type: :request do
 
     it 'Sucess Request' do
       th = TreasureHunt.new(valid_params)
-      expect{
-        post '/treasure_hunt', params: valid_params#, format: :json
-      }.to change {TreasureHunt.count}.from(0).to(1)
+      expect do
+        post '/treasure_hunt', params: valid_params # , format: :json
+      end.to change { TreasureHunt.count }.from(0).to(1)
       th.save
 
       body = JSON.parse(response.body)
       expect(response).to have_http_status(:ok)
-      expect(body.keys).to eq(['status', 'distance'])
-      
+      expect(body.keys).to eq(%w[status distance])
+
       expect(th).to be_valid
       expect(body['distance']).to eq(th.distance)
     end
 
-    it "Bad Request with only latitude params" do 
+    it 'Bad Request with only latitude params' do
       th = TreasureHunt.new(valid_params)
       th.save
 
@@ -64,23 +64,20 @@ RSpec.describe 'TreasureHunts', type: :request do
       expect(body['distance']).to eq(-1)
     end
 
-    it "Bad Request with only longitude params" do
+    it 'Bad Request with only longitude params' do
       post '/treasure_hunt', params: only_longitude
       body = JSON.parse(response.body)
 
       expect(response).to have_http_status(:bad_request)
       expect(body['distance']).to eq(-1)
-
     end
 
-    it "Bad Request with only email params" do
+    it 'Bad Request with only email params' do
       post '/treasure_hunt', params: only_email
       body = JSON.parse(response.body)
 
       expect(response).to have_http_status(:bad_request)
       expect(body['distance']).to eq(-1)
-
     end
-
   end
 end

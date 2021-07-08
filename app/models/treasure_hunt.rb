@@ -12,6 +12,15 @@ class TreasureHunt < ApplicationRecord
                             where(created_at: start_date.to_time.beginning_of_day..end_date.to_time.end_of_day, winner: true)
                           }
 
+  scope :between, lambda { |start_date, end_date|
+    where(created_at: start_date.to_time.beginning_of_day..end_date.to_time.end_of_day)
+  }
+  scope :inside_radius, ->(distance) { where('distance < ?', distance) }
+
+  def current_location
+    [latitude, longitude]
+  end
+
   def self.latitude
     50.051227
   end
@@ -32,12 +41,10 @@ class TreasureHunt < ApplicationRecord
     c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a))
 
     self.distance = (rm * c)
+    self.winner = true if distance < 5.0
   end
 
   def notify_winner
-    if distance < 5
-      self.winner = true
-      SuccessMailer.winner.deliver_later
-    end
+    SuccessMailer.winner.deliver_later if winner
   end
 end

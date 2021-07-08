@@ -8,7 +8,7 @@ class TreasureHuntController < ApplicationController
     if th.save
       render json: { status: 'ok', distance: th.distance }, status: :ok
     else
-      render json: { status: 'error', distance: -1, error: 'error description' }, status: :bad_request
+      render json: { status: 'error', distance: -1, error: th.errors.full_messages }, status: :bad_request
     end
   end
 

@@ -1,4 +1,5 @@
 class AnalyticsController < ApplicationController
+
   def index
     begin
       th = TreasureHunt
@@ -10,4 +11,5 @@ class AnalyticsController < ApplicationController
     end
     render json: { "status": 'ok', "requests": th.as_json(only: [:email, :current_location]) }
   end
+  
 end

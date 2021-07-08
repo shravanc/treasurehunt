@@ -13,15 +13,11 @@ RSpec.describe TreasureHunt, type: :model do
       expect(th).to be_valid
     end
 
-    # it 'is not valid without latitude' do
-    #   th.latitude = nil
-    #   expect(th).to_not be_valid
-    # end
-
-    # it 'is not valid without longitude' do
-    #   th.longitude = nil
-    #   expect(th).to_not be_valid
-    # end
+    it 'is not valid with only one value' do
+      th.current_location = [50.1]
+      expect(th).to_not be_valid
+      # p th.errors.full_messages
+    end
 
     it 'is not valid without email' do
       th.email = nil
@@ -42,6 +38,18 @@ RSpec.describe TreasureHunt, type: :model do
 
     it 'Treasure Longitude to be 19.945704' do
       expect(TreasureHunt.longitude).to eq(19.945704)
+    end
+
+    it 'Only 20 request allowed per hour' do
+      
+      25.times do |t|
+        t = TreasureHunt.new(
+          current_location: [50.051227, 19.945704],
+          email: 'example@domain.com'
+        )
+        t.save
+      end
+      expect(TreasureHunt.count).to be(20)
     end
   end
 
@@ -68,5 +76,6 @@ RSpec.describe TreasureHunt, type: :model do
       th.save
       expect(th.winner).to eq(true)
     end
+
   end
 end

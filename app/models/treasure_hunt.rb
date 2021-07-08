@@ -1,7 +1,12 @@
 class TreasureHunt < ApplicationRecord
-  validates_presence_of :current_location
+  validates :current_location, presence: true, length: {
+    is: 2,
+    message: 'Format allowed: [:latitude, :longitude]'
+  }
   validates_presence_of :email
   validates_format_of :email, with: /\A[^@\s]+@([^@\s]+\.)+[^@\s]+\z/
+
+  before_validation :validate_request_limit
 
   before_save :compute_distance
   after_save :notify_winner
@@ -10,6 +15,7 @@ class TreasureHunt < ApplicationRecord
     where(created_at: start_date.to_time.beginning_of_day..end_date.to_time.end_of_day)
   }
   scope :inside_radius, ->(distance) { where('distance < ?', distance) }
+  scope :request_for_an_hour, ->(email) {where(email: email).where(created_at: 1.hour.ago..Time.now)}
 
   def self.latitude
     50.051227
@@ -17,6 +23,12 @@ class TreasureHunt < ApplicationRecord
 
   def self.longitude
     19.945704
+  end
+
+  def validate_request_limit
+    if TreasureHunt.request_for_an_hour(email).size >= 20
+      self.errors.add(:base, "Reached maximum request for an hour.")
+    end
   end
 
   def compute_distance

@@ -15,7 +15,7 @@ RSpec.describe 'TreasureHunts', type: :request do
         email: 'a@a.com'
       }
     end
-  
+
     let(:only_email) do
       {
         email: 'a@a.com'

@@ -56,8 +56,8 @@ Rails.application.configure do
     domain: 'example.com',
     authentication: 'plain',
     enable_starttls_auto: true,
-    user_name: 'shravan.chandrashekharaiah@gmail.com',
-    password: 'Jhansi007'
+    user_name: ENV['EMAIL_ID'],
+    password: ENV['EMAIL_PSWD']
   }
   # Raises error for missing translations.
   # config.i18n.raise_on_missing_translations = true

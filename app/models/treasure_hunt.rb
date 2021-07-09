@@ -15,7 +15,7 @@ class TreasureHunt < ApplicationRecord
     where(created_at: start_date.to_time.beginning_of_day..end_date.to_time.end_of_day)
   }
   scope :inside_radius, ->(distance) { where('distance < ?', distance) }
-  scope :request_for_an_hour, ->(email) {where(email: email).where(created_at: 1.hour.ago..Time.now)}
+  scope :request_for_an_hour, ->(email) { where(email: email).where(created_at: 1.hour.ago..Time.now) }
 
   def self.latitude
     50.051227
@@ -26,9 +26,7 @@ class TreasureHunt < ApplicationRecord
   end
 
   def validate_request_limit
-    if TreasureHunt.request_for_an_hour(email).size >= 20
-      self.errors.add(:base, "Reached maximum request for an hour.")
-    end
+    errors.add(:base, 'Reached maximum request for an hour.') if TreasureHunt.request_for_an_hour(email).size >= 20
   end
 
   def compute_distance

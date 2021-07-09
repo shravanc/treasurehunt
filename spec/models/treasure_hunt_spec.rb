@@ -41,7 +41,6 @@ RSpec.describe TreasureHunt, type: :model do
     end
 
     it 'Only 20 request allowed per hour' do
-      
       25.times do |t|
         t = TreasureHunt.new(
           current_location: [50.051227, 19.945704],
@@ -76,6 +75,5 @@ RSpec.describe TreasureHunt, type: :model do
       th.save
       expect(th.winner).to eq(true)
     end
-
   end
 end

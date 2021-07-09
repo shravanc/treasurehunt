@@ -15,6 +15,6 @@ class TreasureHuntController < ApplicationController
   private
 
   def treasure_hunt_params
-    params.permit(:email, [:current_location => []])
+    params.permit(:email, [current_location: []])
   end
 end

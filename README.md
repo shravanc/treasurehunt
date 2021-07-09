@@ -5,23 +5,23 @@ application up and running.
 
 Things you may want to cover:
 
-# Ruby version
+## Ruby version
  - 2.7
 
-# Configuration
+## Configuration
  - export EMAIL_ID='from@domain.com'
  - export EMAIL_PSWD='password'
 
-# Database creation
+## Database creation
  - rails db:create
 
-# Database initialization
+## Database initialization
  - rails db:migrate
 
-# How to run the test suite
+## How to run the test suite
  - rspec
 
-# Deployment instructions
+## Deployment instructions
  - rails s
 
 # Problem Statement:
@@ -31,24 +31,24 @@ You are writing a web endpoint for a treasure hunt game. It allows participants 
 Congratulations email is sent only once:
 Treasure location: 50.051227 N, 19.945704 E
 
-# Request format:
+## Request format:
 /treasure_hunt.json?current_location[]=:latitude&current_location[]=:longitude&email=:email
 
-# Example request:
+## Example request:
 POST /treasure_hunt.json?current_location[]=0&current_location[]=0&email=test@example.com
 
-# Example response:
+## Example response:
 Successful response
             { "status": "ok", "distance": 10  }
 
-# Error response
+## Error response
             { "status": "error", "distance": -1, "error": "error description" } 
 
-# Email Content: 
+## Email Content: 
 "Hey, you've found a treasure, congratulations!
 You are [:nth] treasure hunter who has found the treasure." Replace [:nth] with the actual number of treasure hunters who successfully found a treasure before + 1."
 
-# Bonus Points
+## Bonus Points
 You don't have to implement all, you can choose points you want to include in the project.
 * Include unit and functional tests
 * Add token - based authentication for API requests

@@ -50,12 +50,12 @@ You are [:nth] treasure hunter who has found the treasure." Replace [:nth] with 
 
 ## Bonus Points
 You don't have to implement all, you can choose points you want to include in the project.
-* Include unit and functional tests
+* Include unit and functional tests :white_check_mark:
 * Add token - based authentication for API requests
-* Allow 20 requests per hour for a given email.
-* (optional) include deployment script for a platform of choice.
-* Add an analytics endpoint that returns information about location of all the requests that happened in the time window provided in parameters.
-* If a radius parameter is given, response should include only requests that is no further away than :radius meters from the treasure location. 
-* Request format: GET /analytics.json?start_time[]=:start_time&end_time=:end_time&radius=:radius 
-* Sample response: { "status": "ok", "requests": [ { "email": "test@test.com", "current_location": [1.1, 2.2] }, { "email": "test2@test.com", "current_location": [0.0, 0.0] } ] }
+* Allow 20 requests per hour for a given email. :white_check_mark:
+* (optional) include deployment script for a platform of choice. 
+* Add an analytics endpoint that returns information about location of all the requests that happened in the time window provided in parameters. :white_check_mark:
+* If a radius parameter is given, response should include only requests that is no further away than :radius meters from the treasure location.  :white_check_mark:
+* Request format: GET /analytics.json?start_time[]=:start_time&end_time=:end_time&radius=:radius  :white_check_mark:
+* Sample response: { "status": "ok", "requests": [ { "email": "test@test.com", "current_location": [1.1, 2.2] }, { "email": "test2@test.com", "current_location": [0.0, 0.0] } ] } :white_check_mark:
 

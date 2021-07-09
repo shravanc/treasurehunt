@@ -6,19 +6,20 @@ application up and running.
 Things you may want to cover:
 
 * Ruby version
-
-* System dependencies
+ - 2.7
 
 * Configuration
+ - export EMAIL_ID='from@domain.com'
+ - export EMAIL_PSWD='password'
 
 * Database creation
+ - rails db:create
 
 * Database initialization
+ - rails db:migrate
 
 * How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
+ - rspec
 
 * Deployment instructions
-
-* ...
+ - rails s

@@ -1,6 +1,6 @@
 class SuccessMailer < ApplicationMailer
-  def winner
+  def winner(email)
     @usercount = (TreasureHunt.winners.size + 1).ordinalize
-    mail(to: 'shravan007.c@gmail.com', subject: 'Winner!!!')
+    mail(to: email, subject: 'Winner!!!')
   end
 end

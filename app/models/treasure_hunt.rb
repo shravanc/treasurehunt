@@ -11,7 +11,7 @@ class TreasureHunt < ApplicationRecord
   before_save :compute_distance
   after_save :notify_winner
 
-  scope :winners, -> {where(winner: true)}
+  scope :winners, -> { where(winner: true) }
   scope :between, lambda { |start_date, end_date|
     where(created_at: start_date.to_time.beginning_of_day..end_date.to_time.end_of_day)
   }
@@ -46,6 +46,6 @@ class TreasureHunt < ApplicationRecord
   end
 
   def notify_winner
-    SuccessMailer.winner.deliver_later if winner
+    SuccessMailer.winner(email).deliver_later if winner
   end
 end

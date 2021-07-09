@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class TreasureHunt < ApplicationRecord
   validates :current_location, presence: true, length: {
     is: 2,

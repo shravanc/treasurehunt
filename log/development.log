@@ -2675,3 +2675,43 @@ Hey, you've found a treasure, congratulations!
 You are 9th treasure hunter who has found the treasure.
 
 [ActiveJob] [ActionMailer::MailDeliveryJob] [e2730457-a0e4-49d6-85d5-64183a6ac920] Performed ActionMailer::MailDeliveryJob (Job ID: e2730457-a0e4-49d6-85d5-64183a6ac920) from Async(default) in 1153.98ms
+Started POST "/treasure_hunt.json?current_location[]=50.0512&current_location[]=19.9457&email=shravan007.c@gmail.com" for ::1 at 2021-07-09 11:00:33 +0100
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by TreasureHuntController#create as JSON
+  Parameters: {"current_location"=>["50.0512", "19.9457"], "email"=>"shravan007.c@gmail.com"}
+[31mUnpermitted parameter: :format[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/treasure_hunt.rb:32:in `validate_request_limit'
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "treasure_hunts" WHERE "treasure_hunts"."email" = $1 AND "treasure_hunts"."created_at" BETWEEN $2 AND $3[0m  [["email", "shravan007.c@gmail.com"], ["created_at", "2021-07-09 09:00:33.786721"], ["created_at", "2021-07-09 10:00:33.786748"]]
+  ↳ app/models/treasure_hunt.rb:32:in `validate_request_limit'
+  [1m[36mTreasureHunt Create (0.3ms)[0m  [1m[32mINSERT INTO "treasure_hunts" ("current_location", "email", "distance", "winner", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["current_location", "{50.0512,19.9457}"], ["email", "shravan007.c@gmail.com"], ["distance", 3.015816189738042], ["winner", true], ["created_at", "2021-07-09 10:00:33.788657"], ["updated_at", "2021-07-09 10:00:33.788657"]]
+  ↳ app/controllers/treasure_hunt_controller.rb:10:in `create'
+[ActiveJob] Enqueued ActionMailer::MailDeliveryJob (Job ID: b8347086-5784-42b1-bb87-70208200d4b6) to Async(default) with arguments: "SuccessMailer", "winner", "deliver_now", {:args=>["shravan007.c@gmail.com"]}
+[ActiveJob] [ActionMailer::MailDeliveryJob] [b8347086-5784-42b1-bb87-70208200d4b6] Performing ActionMailer::MailDeliveryJob (Job ID: b8347086-5784-42b1-bb87-70208200d4b6) from Async(default) enqueued at 2021-07-09T10:00:33Z with arguments: "SuccessMailer", "winner", "deliver_now", {:args=>["shravan007.c@gmail.com"]}
+  [1m[36mTRANSACTION (12.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/treasure_hunt_controller.rb:10:in `create'
+Completed 200 OK in 40ms (Views: 0.2ms | ActiveRecord: 18.7ms | Allocations: 20892)
+
+
+[ActiveJob] [ActionMailer::MailDeliveryJob] [b8347086-5784-42b1-bb87-70208200d4b6]   [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "treasure_hunts" WHERE "treasure_hunts"."winner" = $1[0m  [["winner", true]]
+[ActiveJob] [ActionMailer::MailDeliveryJob] [b8347086-5784-42b1-bb87-70208200d4b6]   ↳ app/mailers/success_mailer.rb:5:in `winner'
+[ActiveJob] [ActionMailer::MailDeliveryJob] [b8347086-5784-42b1-bb87-70208200d4b6]   Rendering layout layouts/mailer.text.erb
+[ActiveJob] [ActionMailer::MailDeliveryJob] [b8347086-5784-42b1-bb87-70208200d4b6]   Rendering success_mailer/winner.text.erb within layouts/mailer
+[ActiveJob] [ActionMailer::MailDeliveryJob] [b8347086-5784-42b1-bb87-70208200d4b6]   Rendered success_mailer/winner.text.erb within layouts/mailer (Duration: 0.4ms | Allocations: 198)
+[ActiveJob] [ActionMailer::MailDeliveryJob] [b8347086-5784-42b1-bb87-70208200d4b6]   Rendered layout layouts/mailer.text.erb (Duration: 0.7ms | Allocations: 376)
+[ActiveJob] [ActionMailer::MailDeliveryJob] [b8347086-5784-42b1-bb87-70208200d4b6] SuccessMailer#winner: processed outbound mail in 14.1ms
+[ActiveJob] [ActionMailer::MailDeliveryJob] [b8347086-5784-42b1-bb87-70208200d4b6] Delivered mail 60e81e41c77e4_13e9839bc187c@shravans-MacBook-Air.local.mail (1180.3ms)
+[ActiveJob] [ActionMailer::MailDeliveryJob] [b8347086-5784-42b1-bb87-70208200d4b6] Date: Fri, 09 Jul 2021 11:00:33 +0100
+From: shravan.chandrashekharaiah@gmail.com
+To: shravan007.c@gmail.com
+Message-ID: <60e81e41c77e4_13e9839bc187c@shravans-MacBook-Air.local.mail>
+Subject: Winner!!!
+Mime-Version: 1.0
+Content-Type: text/plain;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+Hey, you've found a treasure, congratulations!
+You are 10th treasure hunter who has found the treasure.
+
+[ActiveJob] [ActionMailer::MailDeliveryJob] [b8347086-5784-42b1-bb87-70208200d4b6] Performed ActionMailer::MailDeliveryJob (Job ID: b8347086-5784-42b1-bb87-70208200d4b6) from Async(default) in 1199.27ms

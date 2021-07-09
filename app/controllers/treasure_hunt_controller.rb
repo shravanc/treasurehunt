@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class TreasureHuntController < ApplicationController
   def index
     render json: TreasureHunt.all, status: :ok

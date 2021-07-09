@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CreateTreasureHunts < ActiveRecord::Migration[6.1]
   def change
     create_table :treasure_hunts do |t|

@@ -2357,3 +2357,243 @@ Processing by TreasureHuntController#create as JSON
 Completed 400 Bad Request in 11ms (Views: 0.1ms | ActiveRecord: 7.3ms | Allocations: 5016)
 
 
+Started POST "/treasure_hunt.json?current_location[]=1&current_location[]=2" for ::1 at 2021-07-09 09:50:58 +0100
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by TreasureHuntController#create as JSON
+  Parameters: {"current_location"=>["1", "2"]}
+[31mUnpermitted parameter: :format[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/treasure_hunt.rb:30:in `validate_request_limit'
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "treasure_hunts" WHERE "treasure_hunts"."email" IS NULL AND "treasure_hunts"."created_at" BETWEEN $1 AND $2[0m  [["created_at", "2021-07-09 07:50:58.850221"], ["created_at", "2021-07-09 08:50:58.850250"]]
+  ↳ app/models/treasure_hunt.rb:30:in `validate_request_limit'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/treasure_hunt_controller.rb:8:in `create'
+Completed 400 Bad Request in 20ms (Views: 0.1ms | ActiveRecord: 4.0ms | Allocations: 11646)
+
+
+Started POST "/treasure_hunt.json?current_location[]=1&current_location[]=2&email=a@a.com" for ::1 at 2021-07-09 09:51:13 +0100
+Processing by TreasureHuntController#create as JSON
+  Parameters: {"current_location"=>["1", "2"], "email"=>"a@a.com"}
+[31mUnpermitted parameter: :format[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/treasure_hunt.rb:30:in `validate_request_limit'
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "treasure_hunts" WHERE "treasure_hunts"."email" = $1 AND "treasure_hunts"."created_at" BETWEEN $2 AND $3[0m  [["email", "a@a.com"], ["created_at", "2021-07-09 07:51:13.173771"], ["created_at", "2021-07-09 08:51:13.173819"]]
+  ↳ app/models/treasure_hunt.rb:30:in `validate_request_limit'
+  [1m[36mTreasureHunt Create (0.4ms)[0m  [1m[32mINSERT INTO "treasure_hunts" ("current_location", "email", "distance", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["current_location", "{1.0,2.0}"], ["email", "a@a.com"], ["distance", 5713216.365661933], ["created_at", "2021-07-09 08:51:13.176957"], ["updated_at", "2021-07-09 08:51:13.176957"]]
+  ↳ app/controllers/treasure_hunt_controller.rb:8:in `create'
+  [1m[36mTRANSACTION (2.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/treasure_hunt_controller.rb:8:in `create'
+Completed 200 OK in 11ms (Views: 0.2ms | ActiveRecord: 3.3ms | Allocations: 2484)
+
+
+Started POST "/treasure_hunt.json?current_location[]=50.0512&current_location[]=19.9457&email=a@a.com" for ::1 at 2021-07-09 09:51:46 +0100
+Processing by TreasureHuntController#create as JSON
+  Parameters: {"current_location"=>["50.0512", "19.9457"], "email"=>"a@a.com"}
+[31mUnpermitted parameter: :format[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/treasure_hunt.rb:30:in `validate_request_limit'
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "treasure_hunts" WHERE "treasure_hunts"."email" = $1 AND "treasure_hunts"."created_at" BETWEEN $2 AND $3[0m  [["email", "a@a.com"], ["created_at", "2021-07-09 07:51:46.771173"], ["created_at", "2021-07-09 08:51:46.771207"]]
+  ↳ app/models/treasure_hunt.rb:30:in `validate_request_limit'
+  [1m[36mTreasureHunt Create (0.2ms)[0m  [1m[32mINSERT INTO "treasure_hunts" ("current_location", "email", "distance", "winner", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["current_location", "{50.0512,19.9457}"], ["email", "a@a.com"], ["distance", 3.015816189738042], ["winner", true], ["created_at", "2021-07-09 08:51:46.774070"], ["updated_at", "2021-07-09 08:51:46.774070"]]
+  ↳ app/controllers/treasure_hunt_controller.rb:8:in `create'
+[ActiveJob] Enqueued ActionMailer::MailDeliveryJob (Job ID: 1d73d140-a53c-4f17-9e76-206daa313152) to Async(default) with arguments: "SuccessMailer", "winner", "deliver_now", {:args=>[]}
+[ActiveJob] [ActionMailer::MailDeliveryJob] [1d73d140-a53c-4f17-9e76-206daa313152] Performing ActionMailer::MailDeliveryJob (Job ID: 1d73d140-a53c-4f17-9e76-206daa313152) from Async(default) enqueued at 2021-07-09T08:51:46Z with arguments: "SuccessMailer", "winner", "deliver_now", {:args=>[]}
+  [1m[36mTRANSACTION (0.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/treasure_hunt_controller.rb:8:in `create'
+Completed 200 OK in 29ms (Views: 0.1ms | ActiveRecord: 1.6ms | Allocations: 11245)
+
+
+[ActiveJob] [ActionMailer::MailDeliveryJob] [1d73d140-a53c-4f17-9e76-206daa313152]   [1m[35m (0.7ms)[0m  [1m[34mSELECT COUNT(*) FROM "treasure_hunts" WHERE "treasure_hunts"."winner" = $1[0m  [["winner", true]]
+[ActiveJob] [ActionMailer::MailDeliveryJob] [1d73d140-a53c-4f17-9e76-206daa313152]   ↳ app/mailers/success_mailer.rb:3:in `winner'
+[ActiveJob] [ActionMailer::MailDeliveryJob] [1d73d140-a53c-4f17-9e76-206daa313152]   Rendering layout layouts/mailer.text.erb
+[ActiveJob] [ActionMailer::MailDeliveryJob] [1d73d140-a53c-4f17-9e76-206daa313152]   Rendering success_mailer/winner.text.erb within layouts/mailer
+[ActiveJob] [ActionMailer::MailDeliveryJob] [1d73d140-a53c-4f17-9e76-206daa313152]   Rendered success_mailer/winner.text.erb within layouts/mailer (Duration: 0.6ms | Allocations: 199)
+[ActiveJob] [ActionMailer::MailDeliveryJob] [1d73d140-a53c-4f17-9e76-206daa313152]   Rendered layout layouts/mailer.text.erb (Duration: 1.0ms | Allocations: 377)
+[ActiveJob] [ActionMailer::MailDeliveryJob] [1d73d140-a53c-4f17-9e76-206daa313152] SuccessMailer#winner: processed outbound mail in 24.0ms
+[ActiveJob] [ActionMailer::MailDeliveryJob] [1d73d140-a53c-4f17-9e76-206daa313152] Delivered mail 60e80e22c8725_139ff3a5c839a6@shravans-MacBook-Air.local.mail (1622.4ms)
+[ActiveJob] [ActionMailer::MailDeliveryJob] [1d73d140-a53c-4f17-9e76-206daa313152] Date: Fri, 09 Jul 2021 09:51:46 +0100
+From: shravan.chandrashekharaiah@gmail.com
+To: shravan007.c@gmail.com
+Message-ID: <60e80e22c8725_139ff3a5c839a6@shravans-MacBook-Air.local.mail>
+Subject: Winner!!!
+Mime-Version: 1.0
+Content-Type: text/plain;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+Hey, you've found a treasure, congratulations!
+You are 4 treasure hunter who has found the treasure.
+
+[ActiveJob] [ActionMailer::MailDeliveryJob] [1d73d140-a53c-4f17-9e76-206daa313152] Performed ActionMailer::MailDeliveryJob (Job ID: 1d73d140-a53c-4f17-9e76-206daa313152) from Async(default) in 1648.17ms
+Started POST "/treasure_hunt.json?current_location[]=50.0512&current_location[]=19.9457&email=a@a.com" for ::1 at 2021-07-09 09:53:47 +0100
+Processing by TreasureHuntController#create as JSON
+  Parameters: {"current_location"=>["50.0512", "19.9457"], "email"=>"a@a.com"}
+[31mUnpermitted parameter: :format[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/treasure_hunt.rb:30:in `validate_request_limit'
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "treasure_hunts" WHERE "treasure_hunts"."email" = $1 AND "treasure_hunts"."created_at" BETWEEN $2 AND $3[0m  [["email", "a@a.com"], ["created_at", "2021-07-09 07:53:47.234472"], ["created_at", "2021-07-09 08:53:47.234496"]]
+  ↳ app/models/treasure_hunt.rb:30:in `validate_request_limit'
+  [1m[36mTreasureHunt Create (0.6ms)[0m  [1m[32mINSERT INTO "treasure_hunts" ("current_location", "email", "distance", "winner", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["current_location", "{50.0512,19.9457}"], ["email", "a@a.com"], ["distance", 3.015816189738042], ["winner", true], ["created_at", "2021-07-09 08:53:47.236104"], ["updated_at", "2021-07-09 08:53:47.236104"]]
+  ↳ app/controllers/treasure_hunt_controller.rb:8:in `create'
+[ActiveJob] Enqueued ActionMailer::MailDeliveryJob (Job ID: 4b32c6b9-2527-4c0f-ba36-cd595868dbcc) to Async(default) with arguments: "SuccessMailer", "winner", "deliver_now", {:args=>[]}
+  [1m[36mTRANSACTION (5.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/treasure_hunt_controller.rb:8:in `create'
+Completed 200 OK in 23ms (Views: 0.1ms | ActiveRecord: 12.3ms | Allocations: 7010)
+
+
+[ActiveJob] [ActionMailer::MailDeliveryJob] [4b32c6b9-2527-4c0f-ba36-cd595868dbcc] Performing ActionMailer::MailDeliveryJob (Job ID: 4b32c6b9-2527-4c0f-ba36-cd595868dbcc) from Async(default) enqueued at 2021-07-09T08:53:47Z with arguments: "SuccessMailer", "winner", "deliver_now", {:args=>[]}
+[ActiveJob] [ActionMailer::MailDeliveryJob] [4b32c6b9-2527-4c0f-ba36-cd595868dbcc]   [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "treasure_hunts" WHERE "treasure_hunts"."winner" = $1[0m  [["winner", true]]
+[ActiveJob] [ActionMailer::MailDeliveryJob] [4b32c6b9-2527-4c0f-ba36-cd595868dbcc]   ↳ app/mailers/success_mailer.rb:3:in `winner'
+[ActiveJob] [ActionMailer::MailDeliveryJob] [4b32c6b9-2527-4c0f-ba36-cd595868dbcc] SuccessMailer#winner: processed outbound mail in 5.0ms
+[ActiveJob] [ActionMailer::MailDeliveryJob] [4b32c6b9-2527-4c0f-ba36-cd595868dbcc] Error performing ActionMailer::MailDeliveryJob (Job ID: 4b32c6b9-2527-4c0f-ba36-cd595868dbcc) from Async(default) in 6.18ms: NoMethodError (undefined method `orginal' for 5:Integer
+Did you mean?  ordinal):
+/Users/shravan/ruby_learning/pulsate/treasurehunt/app/mailers/success_mailer.rb:3:in `winner'
+/Users/shravan/ruby_learning/pulsate/treasurehunt/vendor/ruby/2.7.0/gems/actionpack-6.1.4/lib/abstract_controller/base.rb:228:in `process_action'
+/Users/shravan/ruby_learning/pulsate/treasurehunt/vendor/ruby/2.7.0/gems/actionpack-6.1.4/lib/abstract_controller/callbacks.rb:42:in `block in process_action'
+/Users/shravan/ruby_learning/pulsate/treasurehunt/vendor/ruby/2.7.0/gems/activesupport-6.1.4/lib/active_support/callbacks.rb:117:in `block in run_callbacks'
+/Users/shravan/ruby_learning/pulsate/treasurehunt/vendor/ruby/2.7.0/gems/actiontext-6.1.4/lib/action_text/rendering.rb:20:in `with_renderer'
+/Users/shravan/ruby_learning/pulsate/treasurehunt/vendor/ruby/2.7.0/gems/actiontext-6.1.4/lib/action_text/engine.rb:59:in `block (4 levels) in <class:Engine>'
+/Users/shravan/ruby_learning/pulsate/treasurehunt/vendor/ruby/2.7.0/gems/activesupport-6.1.4/lib/active_support/callbacks.rb:126:in `instance_exec'
+/Users/shravan/ruby_learning/pulsate/treasurehunt/vendor/ruby/2.7.0/gems/activesupport-6.1.4/lib/active_support/callbacks.rb:126:in `block in run_callbacks'
+/Users/shravan/ruby_learning/pulsate/treasurehunt/vendor/ruby/2.7.0/gems/activesupport-6.1.4/lib/active_support/callbacks.rb:137:in `run_callbacks'
+/Users/shravan/ruby_learning/pulsate/treasurehunt/vendor/ruby/2.7.0/gems/actionpack-6.1.4/lib/abstract_controller/callbacks.rb:41:in `process_action'
+/Users/shravan/ruby_learning/pulsate/treasurehunt/vendor/ruby/2.7.0/gems/actionpack-6.1.4/lib/abstract_controller/base.rb:165:in `process'
+/Users/shravan/ruby_learning/pulsate/treasurehunt/vendor/ruby/2.7.0/gems/actionmailer-6.1.4/lib/action_mailer/rescuable.rb:25:in `block in process'
+/Users/shravan/ruby_learning/pulsate/treasurehunt/vendor/ruby/2.7.0/gems/actionmailer-6.1.4/lib/action_mailer/rescuable.rb:17:in `handle_exceptions'
+/Users/shravan/ruby_learning/pulsate/treasurehunt/vendor/ruby/2.7.0/gems/actionmailer-6.1.4/lib/action_mailer/rescuable.rb:24:in `process'
+/Users/shravan/ruby_learning/pulsate/treasurehunt/vendor/ruby/2.7.0/gems/actionview-6.1.4/lib/action_view/rendering.rb:39:in `process'
+/Users/shravan/ruby_learning/pulsate/treasurehunt/vendor/ruby/2.7.0/gems/actionmailer-6.1.4/lib/action_mailer/base.rb:615:in `block in process'
+/Users/shravan/ruby_learning/pulsate/treasurehunt/vendor/ruby/2.7.0/gems/activesupport-6.1.4/lib/active_support/notifications.rb:203:in `block in instrument'
+/Users/shravan/ruby_learning/pulsate/treasurehunt/vendor/ruby/2.7.0/gems/activesupport-6.1.4/lib/active_support/notifications/instrumenter.rb:24:in `instrument'
+/Users/shravan/ruby_learning/pulsate/treasurehunt/vendor/ruby/2.7.0/gems/activesupport-6.1.4/lib/active_support/notifications.rb:203:in `instrument'
+/Users/shravan/ruby_learning/pulsate/treasurehunt/vendor/ruby/2.7.0/gems/actionmailer-6.1.4/lib/action_mailer/base.rb:614:in `process'
+/Users/shravan/ruby_learning/pulsate/treasurehunt/vendor/ruby/2.7.0/gems/actionmailer-6.1.4/lib/action_mailer/message_delivery.rb:128:in `block in processed_mailer'
+/Users/shravan/ruby_learning/pulsate/treasurehunt/vendor/ruby/2.7.0/gems/actionmailer-6.1.4/lib/action_mailer/message_delivery.rb:127:in `tap'
+/Users/shravan/ruby_learning/pulsate/treasurehunt/vendor/ruby/2.7.0/gems/actionmailer-6.1.4/lib/action_mailer/message_delivery.rb:127:in `processed_mailer'
+/Users/shravan/ruby_learning/pulsate/treasurehunt/vendor/ruby/2.7.0/gems/actionmailer-6.1.4/lib/action_mailer/message_delivery.rb:118:in `deliver_now'
+/Users/shravan/ruby_learning/pulsate/treasurehunt/vendor/ruby/2.7.0/gems/actionmailer-6.1.4/lib/action_mailer/mail_delivery_job.rb:23:in `perform'
+/Users/shravan/ruby_learning/pulsate/treasurehunt/vendor/ruby/2.7.0/gems/activejob-6.1.4/lib/active_job/execution.rb:48:in `block in perform_now'
+/Users/shravan/ruby_learning/pulsate/treasurehunt/vendor/ruby/2.7.0/gems/activesupport-6.1.4/lib/active_support/callbacks.rb:117:in `block in run_callbacks'
+/Users/shravan/ruby_learning/pulsate/treasurehunt/vendor/ruby/2.7.0/gems/i18n-1.8.10/lib/i18n.rb:314:in `with_locale'
+/Users/shravan/ruby_learning/pulsate/treasurehunt/vendor/ruby/2.7.0/gems/activejob-6.1.4/lib/active_job/translation.rb:9:in `block (2 levels) in <module:Translation>'
+/Users/shravan/ruby_learning/pulsate/treasurehunt/vendor/ruby/2.7.0/gems/activesupport-6.1.4/lib/active_support/callbacks.rb:126:in `instance_exec'
+/Users/shravan/ruby_learning/pulsate/treasurehunt/vendor/ruby/2.7.0/gems/activesupport-6.1.4/lib/active_support/callbacks.rb:126:in `block in run_callbacks'
+/Users/shravan/ruby_learning/pulsate/treasurehunt/vendor/ruby/2.7.0/gems/activesupport-6.1.4/lib/active_support/core_ext/time/zones.rb:66:in `use_zone'
+/Users/shravan/ruby_learning/pulsate/treasurehunt/vendor/ruby/2.7.0/gems/activejob-6.1.4/lib/active_job/timezones.rb:9:in `block (2 levels) in <module:Timezones>'
+/Users/shravan/ruby_learning/pulsate/treasurehunt/vendor/ruby/2.7.0/gems/activesupport-6.1.4/lib/active_support/callbacks.rb:126:in `instance_exec'
+/Users/shravan/ruby_learning/pulsate/treasurehunt/vendor/ruby/2.7.0/gems/activesupport-6.1.4/lib/active_support/callbacks.rb:126:in `block in run_callbacks'
+/Users/shravan/ruby_learning/pulsate/treasurehunt/vendor/ruby/2.7.0/gems/activejob-6.1.4/lib/active_job/instrumentation.rb:21:in `block in instrument'
+/Users/shravan/ruby_learning/pulsate/treasurehunt/vendor/ruby/2.7.0/gems/activesupport-6.1.4/lib/active_support/notifications.rb:203:in `block in instrument'
+/Users/shravan/ruby_learning/pulsate/treasurehunt/vendor/ruby/2.7.0/gems/activesupport-6.1.4/lib/active_support/notifications/instrumenter.rb:24:in `instrument'
+/Users/shravan/ruby_learning/pulsate/treasurehunt/vendor/ruby/2.7.0/gems/activesupport-6.1.4/lib/active_support/notifications.rb:203:in `instrument'
+/Users/shravan/ruby_learning/pulsate/treasurehunt/vendor/ruby/2.7.0/gems/activejob-6.1.4/lib/active_job/instrumentation.rb:31:in `instrument'
+/Users/shravan/ruby_learning/pulsate/treasurehunt/vendor/ruby/2.7.0/gems/activejob-6.1.4/lib/active_job/instrumentation.rb:14:in `block (2 levels) in <module:Instrumentation>'
+/Users/shravan/ruby_learning/pulsate/treasurehunt/vendor/ruby/2.7.0/gems/activesupport-6.1.4/lib/active_support/callbacks.rb:126:in `instance_exec'
+/Users/shravan/ruby_learning/pulsate/treasurehunt/vendor/ruby/2.7.0/gems/activesupport-6.1.4/lib/active_support/callbacks.rb:126:in `block in run_callbacks'
+/Users/shravan/ruby_learning/pulsate/treasurehunt/vendor/ruby/2.7.0/gems/activejob-6.1.4/lib/active_job/logging.rb:22:in `block in tag_logger'
+/Users/shravan/ruby_learning/pulsate/treasurehunt/vendor/ruby/2.7.0/gems/activesupport-6.1.4/lib/active_support/tagged_logging.rb:99:in `block in tagged'
+/Users/shravan/ruby_learning/pulsate/treasurehunt/vendor/ruby/2.7.0/gems/activesupport-6.1.4/lib/active_support/tagged_logging.rb:37:in `tagged'
+/Users/shravan/ruby_learning/pulsate/treasurehunt/vendor/ruby/2.7.0/gems/activesupport-6.1.4/lib/active_support/tagged_logging.rb:99:in `tagged'
+/Users/shravan/ruby_learning/pulsate/treasurehunt/vendor/ruby/2.7.0/gems/activejob-6.1.4/lib/active_job/logging.rb:22:in `tag_logger'
+/Users/shravan/ruby_learning/pulsate/treasurehunt/vendor/ruby/2.7.0/gems/activejob-6.1.4/lib/active_job/logging.rb:15:in `block (2 levels) in <module:Logging>'
+/Users/shravan/ruby_learning/pulsate/treasurehunt/vendor/ruby/2.7.0/gems/activesupport-6.1.4/lib/active_support/callbacks.rb:126:in `instance_exec'
+/Users/shravan/ruby_learning/pulsate/treasurehunt/vendor/ruby/2.7.0/gems/activesupport-6.1.4/lib/active_support/callbacks.rb:126:in `block in run_callbacks'
+/Users/shravan/ruby_learning/pulsate/treasurehunt/vendor/ruby/2.7.0/gems/activesupport-6.1.4/lib/active_support/callbacks.rb:137:in `run_callbacks'
+/Users/shravan/ruby_learning/pulsate/treasurehunt/vendor/ruby/2.7.0/gems/activejob-6.1.4/lib/active_job/execution.rb:47:in `perform_now'
+/Users/shravan/ruby_learning/pulsate/treasurehunt/vendor/ruby/2.7.0/gems/activejob-6.1.4/lib/active_job/execution.rb:25:in `block in execute'
+/Users/shravan/ruby_learning/pulsate/treasurehunt/vendor/ruby/2.7.0/gems/activesupport-6.1.4/lib/active_support/callbacks.rb:117:in `block in run_callbacks'
+/Users/shravan/ruby_learning/pulsate/treasurehunt/vendor/ruby/2.7.0/gems/activejob-6.1.4/lib/active_job/railtie.rb:47:in `block (4 levels) in <class:Railtie>'
+/Users/shravan/ruby_learning/pulsate/treasurehunt/vendor/ruby/2.7.0/gems/activesupport-6.1.4/lib/active_support/execution_wrapper.rb:88:in `wrap'
+/Users/shravan/ruby_learning/pulsate/treasurehunt/vendor/ruby/2.7.0/gems/activesupport-6.1.4/lib/active_support/reloader.rb:72:in `block in wrap'
+/Users/shravan/ruby_learning/pulsate/treasurehunt/vendor/ruby/2.7.0/gems/activesupport-6.1.4/lib/active_support/execution_wrapper.rb:88:in `wrap'
+/Users/shravan/ruby_learning/pulsate/treasurehunt/vendor/ruby/2.7.0/gems/activesupport-6.1.4/lib/active_support/reloader.rb:71:in `wrap'
+/Users/shravan/ruby_learning/pulsate/treasurehunt/vendor/ruby/2.7.0/gems/activejob-6.1.4/lib/active_job/railtie.rb:46:in `block (3 levels) in <class:Railtie>'
+/Users/shravan/ruby_learning/pulsate/treasurehunt/vendor/ruby/2.7.0/gems/activesupport-6.1.4/lib/active_support/callbacks.rb:126:in `instance_exec'
+/Users/shravan/ruby_learning/pulsate/treasurehunt/vendor/ruby/2.7.0/gems/activesupport-6.1.4/lib/active_support/callbacks.rb:126:in `block in run_callbacks'
+/Users/shravan/ruby_learning/pulsate/treasurehunt/vendor/ruby/2.7.0/gems/activesupport-6.1.4/lib/active_support/callbacks.rb:137:in `run_callbacks'
+/Users/shravan/ruby_learning/pulsate/treasurehunt/vendor/ruby/2.7.0/gems/activejob-6.1.4/lib/active_job/execution.rb:23:in `execute'
+/Users/shravan/ruby_learning/pulsate/treasurehunt/vendor/ruby/2.7.0/gems/activejob-6.1.4/lib/active_job/queue_adapters/async_adapter.rb:70:in `perform'
+/Users/shravan/ruby_learning/pulsate/treasurehunt/vendor/ruby/2.7.0/gems/concurrent-ruby-1.1.9/lib/concurrent-ruby/concurrent/executor/ruby_thread_pool_executor.rb:363:in `run_task'
+/Users/shravan/ruby_learning/pulsate/treasurehunt/vendor/ruby/2.7.0/gems/concurrent-ruby-1.1.9/lib/concurrent-ruby/concurrent/executor/ruby_thread_pool_executor.rb:352:in `block (3 levels) in create_worker'
+/Users/shravan/ruby_learning/pulsate/treasurehunt/vendor/ruby/2.7.0/gems/concurrent-ruby-1.1.9/lib/concurrent-ruby/concurrent/executor/ruby_thread_pool_executor.rb:335:in `loop'
+/Users/shravan/ruby_learning/pulsate/treasurehunt/vendor/ruby/2.7.0/gems/concurrent-ruby-1.1.9/lib/concurrent-ruby/concurrent/executor/ruby_thread_pool_executor.rb:335:in `block (2 levels) in create_worker'
+/Users/shravan/ruby_learning/pulsate/treasurehunt/vendor/ruby/2.7.0/gems/concurrent-ruby-1.1.9/lib/concurrent-ruby/concurrent/executor/ruby_thread_pool_executor.rb:334:in `catch'
+/Users/shravan/ruby_learning/pulsate/treasurehunt/vendor/ruby/2.7.0/gems/concurrent-ruby-1.1.9/lib/concurrent-ruby/concurrent/executor/ruby_thread_pool_executor.rb:334:in `block in create_worker'
+Started POST "/treasure_hunt.json?current_location[]=50.0512&current_location[]=19.9457&email=a@a.com" for ::1 at 2021-07-09 09:54:27 +0100
+Processing by TreasureHuntController#create as JSON
+  Parameters: {"current_location"=>["50.0512", "19.9457"], "email"=>"a@a.com"}
+[31mUnpermitted parameter: :format[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/treasure_hunt.rb:30:in `validate_request_limit'
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "treasure_hunts" WHERE "treasure_hunts"."email" = $1 AND "treasure_hunts"."created_at" BETWEEN $2 AND $3[0m  [["email", "a@a.com"], ["created_at", "2021-07-09 07:54:27.778862"], ["created_at", "2021-07-09 08:54:27.778884"]]
+  ↳ app/models/treasure_hunt.rb:30:in `validate_request_limit'
+  [1m[36mTreasureHunt Create (0.3ms)[0m  [1m[32mINSERT INTO "treasure_hunts" ("current_location", "email", "distance", "winner", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["current_location", "{50.0512,19.9457}"], ["email", "a@a.com"], ["distance", 3.015816189738042], ["winner", true], ["created_at", "2021-07-09 08:54:27.780432"], ["updated_at", "2021-07-09 08:54:27.780432"]]
+  ↳ app/controllers/treasure_hunt_controller.rb:8:in `create'
+[ActiveJob] Enqueued ActionMailer::MailDeliveryJob (Job ID: 0e98f683-e6ed-4a2b-9094-cef1097a2cc4) to Async(default) with arguments: "SuccessMailer", "winner", "deliver_now", {:args=>[]}
+  [1m[36mTRANSACTION (5.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/treasure_hunt_controller.rb:8:in `create'
+Completed 200 OK in 18ms (Views: 0.1ms | ActiveRecord: 8.2ms | Allocations: 6769)
+
+
+[ActiveJob] [ActionMailer::MailDeliveryJob] [0e98f683-e6ed-4a2b-9094-cef1097a2cc4] Performing ActionMailer::MailDeliveryJob (Job ID: 0e98f683-e6ed-4a2b-9094-cef1097a2cc4) from Async(default) enqueued at 2021-07-09T08:54:27Z with arguments: "SuccessMailer", "winner", "deliver_now", {:args=>[]}
+[ActiveJob] [ActionMailer::MailDeliveryJob] [0e98f683-e6ed-4a2b-9094-cef1097a2cc4]   [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "treasure_hunts" WHERE "treasure_hunts"."winner" = $1[0m  [["winner", true]]
+[ActiveJob] [ActionMailer::MailDeliveryJob] [0e98f683-e6ed-4a2b-9094-cef1097a2cc4]   ↳ app/mailers/success_mailer.rb:3:in `winner'
+[ActiveJob] [ActionMailer::MailDeliveryJob] [0e98f683-e6ed-4a2b-9094-cef1097a2cc4]   Rendering layout layouts/mailer.text.erb
+[ActiveJob] [ActionMailer::MailDeliveryJob] [0e98f683-e6ed-4a2b-9094-cef1097a2cc4]   Rendering success_mailer/winner.text.erb within layouts/mailer
+[ActiveJob] [ActionMailer::MailDeliveryJob] [0e98f683-e6ed-4a2b-9094-cef1097a2cc4]   Rendered success_mailer/winner.text.erb within layouts/mailer (Duration: 0.0ms | Allocations: 4)
+[ActiveJob] [ActionMailer::MailDeliveryJob] [0e98f683-e6ed-4a2b-9094-cef1097a2cc4]   Rendered layout layouts/mailer.text.erb (Duration: 0.1ms | Allocations: 96)
+[ActiveJob] [ActionMailer::MailDeliveryJob] [0e98f683-e6ed-4a2b-9094-cef1097a2cc4] SuccessMailer#winner: processed outbound mail in 4.0ms
+[ActiveJob] [ActionMailer::MailDeliveryJob] [0e98f683-e6ed-4a2b-9094-cef1097a2cc4] Delivered mail 60e80ec3c5dc5_139ff3a5c84088@shravans-MacBook-Air.local.mail (1198.4ms)
+[ActiveJob] [ActionMailer::MailDeliveryJob] [0e98f683-e6ed-4a2b-9094-cef1097a2cc4] Date: Fri, 09 Jul 2021 09:54:27 +0100
+From: shravan.chandrashekharaiah@gmail.com
+To: shravan007.c@gmail.com
+Message-ID: <60e80ec3c5dc5_139ff3a5c84088@shravans-MacBook-Air.local.mail>
+Subject: Winner!!!
+Mime-Version: 1.0
+Content-Type: text/plain;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+Hey, you've found a treasure, congratulations!
+You are th treasure hunter who has found the treasure.
+
+[ActiveJob] [ActionMailer::MailDeliveryJob] [0e98f683-e6ed-4a2b-9094-cef1097a2cc4] Performed ActionMailer::MailDeliveryJob (Job ID: 0e98f683-e6ed-4a2b-9094-cef1097a2cc4) from Async(default) in 1203.6ms
+Started POST "/treasure_hunt.json?current_location[]=50.0512&current_location[]=19.9457&email=a@a.com" for ::1 at 2021-07-09 09:57:18 +0100
+Processing by TreasureHuntController#create as JSON
+  Parameters: {"current_location"=>["50.0512", "19.9457"], "email"=>"a@a.com"}
+[31mUnpermitted parameter: :format[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/treasure_hunt.rb:30:in `validate_request_limit'
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "treasure_hunts" WHERE "treasure_hunts"."email" = $1 AND "treasure_hunts"."created_at" BETWEEN $2 AND $3[0m  [["email", "a@a.com"], ["created_at", "2021-07-09 07:57:18.643659"], ["created_at", "2021-07-09 08:57:18.643676"]]
+  ↳ app/models/treasure_hunt.rb:30:in `validate_request_limit'
+  [1m[36mTreasureHunt Create (0.2ms)[0m  [1m[32mINSERT INTO "treasure_hunts" ("current_location", "email", "distance", "winner", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["current_location", "{50.0512,19.9457}"], ["email", "a@a.com"], ["distance", 3.015816189738042], ["winner", true], ["created_at", "2021-07-09 08:57:18.644964"], ["updated_at", "2021-07-09 08:57:18.644964"]]
+  ↳ app/controllers/treasure_hunt_controller.rb:8:in `create'
+[ActiveJob] Enqueued ActionMailer::MailDeliveryJob (Job ID: fb651afb-c6c2-4d54-9c1e-941cfc094652) to Async(default) with arguments: "SuccessMailer", "winner", "deliver_now", {:args=>[]}
+  [1m[36mTRANSACTION (4.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/treasure_hunt_controller.rb:8:in `create'
+Completed 200 OK in 17ms (Views: 0.1ms | ActiveRecord: 7.9ms | Allocations: 6769)
+
+
+[ActiveJob] [ActionMailer::MailDeliveryJob] [fb651afb-c6c2-4d54-9c1e-941cfc094652] Performing ActionMailer::MailDeliveryJob (Job ID: fb651afb-c6c2-4d54-9c1e-941cfc094652) from Async(default) enqueued at 2021-07-09T08:57:18Z with arguments: "SuccessMailer", "winner", "deliver_now", {:args=>[]}
+[ActiveJob] [ActionMailer::MailDeliveryJob] [fb651afb-c6c2-4d54-9c1e-941cfc094652]   [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "treasure_hunts" WHERE "treasure_hunts"."winner" = $1[0m  [["winner", true]]
+[ActiveJob] [ActionMailer::MailDeliveryJob] [fb651afb-c6c2-4d54-9c1e-941cfc094652]   ↳ app/mailers/success_mailer.rb:3:in `winner'
+[ActiveJob] [ActionMailer::MailDeliveryJob] [fb651afb-c6c2-4d54-9c1e-941cfc094652]   Rendering layout layouts/mailer.text.erb
+[ActiveJob] [ActionMailer::MailDeliveryJob] [fb651afb-c6c2-4d54-9c1e-941cfc094652]   Rendering success_mailer/winner.text.erb within layouts/mailer
+[ActiveJob] [ActionMailer::MailDeliveryJob] [fb651afb-c6c2-4d54-9c1e-941cfc094652]   Rendered success_mailer/winner.text.erb within layouts/mailer (Duration: 0.0ms | Allocations: 4)
+[ActiveJob] [ActionMailer::MailDeliveryJob] [fb651afb-c6c2-4d54-9c1e-941cfc094652]   Rendered layout layouts/mailer.text.erb (Duration: 0.1ms | Allocations: 96)
+[ActiveJob] [ActionMailer::MailDeliveryJob] [fb651afb-c6c2-4d54-9c1e-941cfc094652] SuccessMailer#winner: processed outbound mail in 5.2ms
+[ActiveJob] [ActionMailer::MailDeliveryJob] [fb651afb-c6c2-4d54-9c1e-941cfc094652] Delivered mail 60e80f6ea6e6e_139ff3a5c84176@shravans-MacBook-Air.local.mail (1230.2ms)
+[ActiveJob] [ActionMailer::MailDeliveryJob] [fb651afb-c6c2-4d54-9c1e-941cfc094652] Date: Fri, 09 Jul 2021 09:57:18 +0100
+From: shravan.chandrashekharaiah@gmail.com
+To: shravan007.c@gmail.com
+Message-ID: <60e80f6ea6e6e_139ff3a5c84176@shravans-MacBook-Air.local.mail>
+Subject: Winner!!!
+Mime-Version: 1.0
+Content-Type: text/plain;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+Hey, you've found a treasure, congratulations!
+You are 7th treasure hunter who has found the treasure.
+
+[ActiveJob] [ActionMailer::MailDeliveryJob] [fb651afb-c6c2-4d54-9c1e-941cfc094652] Performed ActionMailer::MailDeliveryJob (Job ID: fb651afb-c6c2-4d54-9c1e-941cfc094652) from Async(default) in 1236.74ms
